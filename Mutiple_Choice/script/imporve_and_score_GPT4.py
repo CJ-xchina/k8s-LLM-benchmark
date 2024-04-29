@@ -32,7 +32,7 @@ def process_markdown_files(input_file, output_file, prompt, log_file='processed_
     batch_count = 0
     with open(input_file, 'r', encoding='utf-8') as file:
         for line in file:
-            if batch_count >= 8:
+            if batch_count >= 3:
                 break
             line = line.strip()
             if line:
