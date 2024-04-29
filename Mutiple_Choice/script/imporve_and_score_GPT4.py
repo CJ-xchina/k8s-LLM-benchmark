@@ -53,7 +53,6 @@ def process_markdown_files(input_file, output_file, prompt, log_file='processed_
     for json_obj in valid_jsons:
         updated_prompt = updated_prompt + json.dumps(json_obj)
 
-    content = ''
     try:
         content = use_client(updated_prompt, status, only_md_json=True)
     except Exception:

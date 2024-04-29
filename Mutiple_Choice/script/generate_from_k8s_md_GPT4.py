@@ -13,7 +13,7 @@ status = ''
 import os
 
 
-def process_markdown_files(input_folder, output_file, prompt, log_file='processed_files.log'):
+def process_markdown_files(input_folder, output_file, prompt, log_file='../resources/processed_files.log'):
     # 读取已处理的文件列表
     if os.path.exists(log_file):
         with open(log_file, 'r', encoding='utf-8') as file:
@@ -98,7 +98,7 @@ def replace_original_file(original_file, new_file):
 # 在脚本开始前暂停5秒以允许准备
 sleep(5)
 input_folder = 'Z:\MY_FIELS\Project\Python\mistral-src\website-main\content\en\docs'
-output_file = 'ops_data_en.jsonl'
+output_file = '../resources/ops_data_en.jsonl'
 with open('prompt_extract_multiple_choice.txt', 'r', encoding='utf-8') as file:
     prompt = file.read()
 
