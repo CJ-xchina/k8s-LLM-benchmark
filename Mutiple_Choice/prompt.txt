@@ -1,0 +1,39 @@
+{
+  "prompt": "Given a text containing Kubernetes (K8s) knowledge, generate multiple-choice questions based on the content. Each question should be structured in JSON format with fields for category, subcategory, id, question text, A, B, C, D, and the correct answer.And the output of the content output to a markdown code box, and in addition to the markdown code box in the code does not allow the output of other content, and the output of the code is a number of complete json rather than an array, each complete json occupies a line,For the classification of the task I need to explain in detail: first of all, the K8s command code, if the question or answer only involves the use of a single command or explanation, then the topic is classified as a single-command operation, if it involves a more complex operation of a single command can not be achieved when the need for multiple commands to achieve the question is classified as a multi-command operation, if the question involves how to write automation scripts to save manpower cost If the question is about how to write automation scripts to save labour costs, then the question is classified in the subcategory of automation scripts. If the problem does not involve real problems but only knowledge, then it can be classified into K8s Knowledge Base category, if it involves how to use in reality and real K8s scenarios, then it will be classified into K8s Real-world Problems category. the language of the output for the English language",
+  "categories": [
+    "K8s Knowledge Base",
+    "K8s Real-world Problems",
+    "K8s Command Instructions",
+    "others"
+  ],
+  "subcategories": {
+    "K8s Knowledge Base": [
+      "Configuration and Deployment",
+      "Performance Optimization",
+      "Network and Security",
+      "Storage and Database",
+      "Monitoring and Debugging"
+    ],
+    "K8s Real-world Problems": [
+      "Fault Detection and Diagnosis",
+      "Performance Bottleneck Analysis",
+      "Network Issues Diagnosis",
+      "Security Vulnerabilities and Configuration Errors"
+    ],
+    "K8s Command Instructions": [
+      "Single Command Operations",
+      "Multiple Command Operations",
+      "Automation Scripts"
+    ]
+  },
+  "example_output": "
+  ```json
+{"id": 10, "category": "K8s Command Instructions", "subcategory": "Single Command Operations", "question": "Which command is commonly used to view the logs of a pod?", "A": "logs", "B": "log", "C": "journal", "D": "diary", "answer": "A"}
+{"id": 11, "category": "K8s Knowledge Base", "subcategory": "Monitoring and Debugging", "question": "Which of the following is NOT a component of Kubernetes?", "A": "kube-apiserver", "B": "kube-scheduler", "C": "kube-controller-manager", "D": "memcached", "answer": "D"}
+```
+}
+
+In the case I gave you only two titles appear, but this is only an example, I want you to extract not necessarily a large number of questions but the quality of the questions, make sure that the questions have only unique answers! If the question may have more than one answer in the options then the question should not be output! In other words, I don't care about the number of questions, I care about the quality of the questions and the depth of the questions, and I want you to take into account the construction of each question to make sure that I get high quality questions! At the same time I want your multiple choice questions not to be detached from the question, because the text I provide you with to answer the question is not accessible to the person answering the question, and the person doing the question only has knowledge of K8s, so the question you provide needs to be able to be answered even after detaching it from the text I provide you with,The categorisation of topics is an important criterion for judging competence, and careful consideration must be given to the choice of category and sub-category, as choosing any of them incorrectly can have serious consequences! For each classification, please think in detail and analyse the question and the options before answering. If you are not sure about the classification of the question, first of all, to avoid mistakes, you can set the category of the question to others and the sub-category to empty, and be sure to avoid mistakes in classification and consider the results of the classification of the question in detail!
+
+Now please analyse the text below to summarise:
+
