@@ -95,8 +95,7 @@ def wait_until_image_appears(image_path, timeout=90, check_interval=0.5):
     return False
 
 
-def use_client(prompt, status, only_md_json=False):
-
+def use_client(prompt, status, only_md_json=False, vpn_fresh=True):
     # 点击输入栏
     click_input_line = f'../images/{status}/click_input_line.png'
     # 产生对话按钮
@@ -134,14 +133,16 @@ def use_client(prompt, status, only_md_json=False):
     # 取消系统页面
     find_and_click(sys_cancel)
 
+
     # 点击浏览器
     if find_and_click(fresh_button) == False:
         find_and_click(status_map[status])
 
-    # 刷新vpn网络
-    find_and_click(refresh_vpn, time_limit=8)
-    time.sleep(7)
-    find_and_click(ms, time_limit=5, double_click=True)
+    if vpn_fresh:
+        # 刷新vpn网络
+        find_and_click(refresh_vpn, time_limit=3)
+        time.sleep(7)
+        find_and_click(ms, time_limit=3, double_click=True)
 
     # 刷新
     find_and_click(fresh_button)

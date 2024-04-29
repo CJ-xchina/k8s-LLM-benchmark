@@ -1,0 +1,6 @@
+This is a multiple choice question about Kubernetes, the title is: {question}, here are the options for this multiple choice question:
+A:{A}
+B:{B}
+C:{C}
+D:{D}
+I need you to answer the question, what I need you to output is just the answer to the question e.g. A, B, C, D, the answer is a multiple choice question so only one can appear character, the answer must be in uppercase, and the output must not involve any dialogue between us, now please analyse the answer to this question based on your knowledge of Kubernetes:
