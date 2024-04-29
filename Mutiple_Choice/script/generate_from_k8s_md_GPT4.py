@@ -99,7 +99,7 @@ def replace_original_file(original_file, new_file):
 sleep(5)
 input_folder = 'Z:\MY_FIELS\Project\Python\mistral-src\website-main\content\en\docs'
 output_file = '../resources/ops_data_en.jsonl'
-with open('prompt_extract_multiple_choice.txt', 'r', encoding='utf-8') as file:
+with open('../resources/prompt/prompt_extract_multiple_choice.txt', 'r', encoding='utf-8') as file:
     prompt = file.read()
 
 t = 0

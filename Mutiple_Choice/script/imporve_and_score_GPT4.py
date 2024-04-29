@@ -107,9 +107,9 @@ def replace_original_file(original_file, new_file):
 
 # 在脚本开始前暂停5秒以允许准备
 sleep(5)
-input_file = 'ops_data_en.jsonl'
-output_file = 'ops_data_en_improve.jsonl'
-with open('./prompt_improve_score.txt', 'r', encoding='utf-8') as file:
+input_file = '../resources/ops_data_en.jsonl'
+output_file = '../resources/ops_data_en_improve.jsonl'
+with open('../resources/prompt/prompt_improve_score.txt', 'r', encoding='utf-8') as file:
     prompt = file.read()
 
 t = 0
