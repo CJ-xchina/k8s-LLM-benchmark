@@ -25,7 +25,7 @@ def append_to_csv(df, new_data, model_name):
     max_id = int(df['id'].max()) if not df.empty else 0
     new_ids = list(range(max_id + 1, max(item["id"] for item in new_data) + 1))
     new_rows = [{'id': new_id, 'answer': item['answer']} for new_id, item in zip(new_ids, new_data)]
-    df = df._append(new_rows, ignore_index=True)
+    df = df.append(new_rows, ignore_index=True)
     if model_name not in df.columns:
         df[model_name] = None
     return df
@@ -39,8 +39,12 @@ def find_and_write(df, input_data, model_name, prompt_text):
         prompt_text = prompt_text.format(**question_data)
         try:
             simulated_output = use_client(prompt_text, status='chrome', vpn_fresh=False)
-        except Exception:
+        except Exception as e:
             simulated_output = ''
+            print(f"An error occurred: {e}")
+            # 可选：打印更多关于异常的信息
+            import traceback
+            traceback.print_exc()  # 这将打印堆栈跟踪，有助于调试
 
         df.at[empty_index, model_name] = simulated_output
     return df, prompt_text

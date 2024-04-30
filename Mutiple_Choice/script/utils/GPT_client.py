@@ -46,6 +46,8 @@ def find_and_click(folder_path, time_limit=2, double_click=False):
                 w, h = template.shape[:-1][::-1]
                 x, y = max_loc[0] + w // 2, max_loc[1] + h // 2
 
+        
+        
                 # 移动鼠标并点击
                 pyautogui.moveTo(x, y, duration=0.1)
                 if double_click:
@@ -60,8 +62,9 @@ def find_and_click(folder_path, time_limit=2, double_click=False):
 
 
 
-def find_and_click_paste(image_path):
+def find_and_click_paste(image_path, prompt):
     find_and_click(image_path)
+    # pyautogui.typewrite(prompt)
     pyautogui.hotkey('ctrl', 'v')
     pyautogui.press('enter')
 
@@ -86,7 +89,7 @@ def wait_until_image_appears(folder_path, timeout=90, check_interval=0.5):
     while True:
         # 检查是否超时
         if time.time() - start_time > timeout:
-            print("Timeout: Image not found on the screen.")
+            print(f"Timeout: Image folder {folder_path} not found  on the screen.")
             return False
 
         # 屏幕截图
@@ -107,8 +110,7 @@ def wait_until_image_appears(folder_path, timeout=90, check_interval=0.5):
             min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(result)
 
             # 检查是否找到了足够匹配的图片
-            if max_val >= 0.8:
-                print(f"Image '{image_file}' found on the screen.")
+            if max_val >= 0.5:
                 return True
 
         # 等待下一次检查
@@ -152,7 +154,6 @@ def use_client(prompt, status, only_md_json=False, vpn_fresh=True):
         'chrome': '../images/chrome',
         'edge': '../images/edge'
     }
-
     # 取消系统页面
     find_and_click(sys_cancel)
 
@@ -172,9 +173,11 @@ def use_client(prompt, status, only_md_json=False, vpn_fresh=True):
     find_and_click(target_chat_bot)
     # 打开新对话
     find_and_click(new_chat_button)
-
+    
     pyperclip.copy(prompt)
-    find_and_click_paste(click_input_line)
+    
+    find_and_click_paste(click_input_line, prompt=prompt)
+
     # 出现网络故障，无法发送消息
     if not wait_until_image_appears(generating_button, timeout=10):
         print("Error occur because of network")
@@ -185,7 +188,8 @@ def use_client(prompt, status, only_md_json=False, vpn_fresh=True):
         raise Exception("time access limit in GPT4.0 model , wait 30 minutes")
 
     # 等待生成完毕
-    wait_until_image_appears(start_intput)  # Check the specific pixel for color change
+    
+    (start_intput)  # Check the specific pixel for color change
 
     # 执行最多1次继续生成
     for i in range(2):
