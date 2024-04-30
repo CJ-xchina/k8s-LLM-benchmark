@@ -37,7 +37,11 @@ def find_and_write(df, input_data, model_name, prompt_text):
         empty_id = df.at[empty_index, 'id']
         question_data = next(item for item in input_data if item["id"] == empty_id)
         prompt_text = prompt_text.format(**question_data)
-        simulated_output = use_client(prompt_text, status='chrome', vpn_fresh=False)
+        try:
+            simulated_output = use_client(prompt_text, status='chrome', vpn_fresh=False)
+        except Exception:
+            simulated_output = ''
+
         df.at[empty_index, model_name] = simulated_output
     return df, prompt_text
 
