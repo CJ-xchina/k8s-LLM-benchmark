@@ -1,0 +1,10 @@
+{"id": 1, "category": "K8s Knowledge Base", "subcategory": "Storage & Data Management", "question": "What are ETCD and its characteristics?", "score": 3}
+{"id": 2, "category": "K8s Knowledge Base", "subcategory": "Storage & Data Management", "question": "What are the suitable scenarios for ETCD?", "score": 2}
+{"id": 3, "category": "K8s Knowledge Base", "subcategory": "Core Concepts", "question": "What is Kubernetes?", "score": 1}
+{"id": 4, "category": "K8s Knowledge Base", "subcategory": "Core Concepts", "question": "What is the relationship between Kubernetes and Docker?", "score": 2}
+{"id": 5, "category": "K8s Knowledge Base", "subcategory": "Configuration and Operations", "question": "What are Minikube, Kubectl, and Kubelet in Kubernetes?", "score": 3}
+{"id": 6, "category": "K8s Knowledge Base", "subcategory": "Configuration and Operations", "question": "What are the common deployment methods in Kubernetes?", "score": 3}
+{"id": 7, "category": "K8s Knowledge Base", "subcategory": "High Availability and Disaster Recovery", "question": "How does Kubernetes manage clusters?", "score": 3}
+{"id": 8, "category": "K8s Knowledge Base", "subcategory": "Core Concepts", "question": "What are the advantages, suitable scenarios, and characteristics of Kubernetes?", "score": 3}
+{"id": 9, "category": "K8s Knowledge Base", "subcategory": "Core Concepts", "question": "What are the disadvantages or current shortcomings of Kubernetes?", "score": 2}
+{"id": 10, "category": "K8s Knowledge Base", "subcategory": "Core Concepts", "question": "What are some fundamental concepts related to Kubernetes?", "score": 2}
