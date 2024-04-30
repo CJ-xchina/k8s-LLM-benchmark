@@ -1,0 +1,60 @@
+In order to effectively assess the capabilities of the Big Language Model in the Kubernetes domain, a detailed division of capabilities can be made based on the following three main branches as well as their subcategories:
+
+### 1. K8s Knowledge Base
+This category mainly deals with the understanding and storage of knowledge of core Kubernetes concepts and theories. It includes the following sub-categories:
+- **Core Concepts**: includes the basic building blocks and working principles of Pods, Nodes, Clusters, ReplicaSets, etc.
+- **Performance Optimisation**: covers resource allocation, load balancing, scheduling optimisation and other strategies to improve system performance.
+- **Network and Service Discovery**: covers the configuration and optimisation of services, Ingress, network policies, etc.
+- **Security**: Involves authentication, authorisation, security policies and network security.
+- **Storage & Data Management**: involves storage solutions such as Persistent Volumes, StatefulSets, etc.
+- **Monitoring and Logging**: involves log management, monitoring tools such as Prometheus and Elasticsearch applications.
+- **Configuration and Operations**: covers configuration management, Kubernetes operations and maintenance practices.
+- **High Availability and Disaster Recovery**: covers cluster backup, failover, and disaster recovery strategies.
+
+### 2. K8s Real-World Problems
+This category focuses on specific problems and troubleshooting encountered in practice, and it includes the following subcategories:
+- **Cluster Configuration Problems**: problems caused by mis- or under-configuration.
+- **Workload management problems**: problems with application deployment, scaling up and down, updates, etc.
+- **Network Problem Diagnosis**: network connectivity, performance issues, etc.
+- **Performance bottleneck analysis**: analyse and solve cluster performance bottlenecks.
+- **Security Vulnerability and Privilege Issues**: Handle security vulnerabilities, configure correct privileges and policies.
+- **Storage Issues**: Address various issues related to persistent storage.
+- **Monitoring & Logging Issues**: monitoring system deficiencies or failures, logging issues diagnosis.
+- **Application Level Issues**: concerns the configuration and issues of specific applications on Kubernetes.
+
+### 3. K8s Code Commands
+Focuses on actual command line operations and scripting, specifically including:
+- **Single-command operations**: operations performed using a single kubectl command.
+- **Multi-command operations**: complex tasks that require a series of kubectl commands to be used in conjunction.
+- **Automation scripts**: scripts written to automate routine tasks.
+
+### How to classify problems
+When faced with a specific Kubernetes problem, you can categorise it according to the nature of the problem and what it involves:
+1. **Determine the nature of the problem**: first determine whether the problem is about the presentation of theoretical knowledge, or about practical operations, or about programming and scripting.
+2. **Analysis of the specific areas involved in the problem**: For example, if the problem involves the scheduling and optimisation of Pods, it should be classified as "Performance Optimisation"; if the problem is about how to check the status of clusters through the kubectl commands, then it should be classified as "Single-Command Operation". If the question is about how to view the cluster status via kubectl commands, it is classified as "single-command operations".
+3. **Consider the complexity of the problem and its practical application**: for example, if the problem is a complex troubleshooting scenario, it may be classified under the corresponding subcategory of "K8s real-world problems".
+Add to the above text Now I will pass in n Kubernetes questions and I need you to help me score the questions 1-5 based on how well they contain core Kubernetes knowledge, the scoring rules are as follows:
+
+Of course, we can score in detail in the following ways:
+
+Score 1: This type of question is extremely basic and barely touches on core knowledge of Kubernetes, with only a superficial brief mention, or the question is phrased vaguely with multiple possible answers that provide little help in assessing core knowledge of Kubernetes, or even relevant knowledge points that do not appear.
+Score 2: Questions slightly cover some basic Kubernetes concepts, but the content is still shallow and not strongly enough related to core knowledge of Kubernetes to demonstrate the need for a deeper understanding of Kubernetes.
+Score 3: Questions moderately cover core Kubernetes concepts and include some common operational or theoretical knowledge, but may lack depth and challenge to moderately assess basic application and understanding of Kubernetes.
+Score 4: Questions cover the core knowledge of Kubernetes well, including more complex theoretical knowledge or practical operations, able to better assess understanding and application of Kubernetes, but still has room for improvement in some details.
+Score 5: Questions are very detailed and in-depth, comprehensively covering the core knowledge of Kubernetes, including common and frequently used knowledge points. This type of question requires not only in-depth theoretical understanding, but also precise practical skills, and is able to comprehensively assess an individual's degree of expertise in the field of Kubernetes.
+
+Now, you can pass in Kubernetes specific questions and I will analyse and grade each question in detail and categorise them based on the grading criteria mentioned above. I need you to sort the topics into categories, both large and small.
+
+you return some questions completed jsons with id, category, subcategory, question, score, where the category and subcategory I pass in do not serve as your categorisation criteria. Score is the quality score of the question you entered.
+
+I need the returned data to be in English and not allow the content of the dialogue with me, only the output of the processed title, the processed title is output to the markdown code box, the output doesn't need to be a json array, the output one line is a full json object, for example:
+"""
+```json
+{"id": 1, "category": "K8s Knowledge Base", "subcategory": "Core Concepts", "question": "What is the primary goal of the 'Concepts' section in Kubernetes documentation?",  "score": 1}
+{"id": 2, "category": "K8s Knowledge Base", "subcategory": "Core Concepts", "question": "Which aspect does the 'Concepts' section primarily focus on regarding Kubernetes?", "score": 1}
+{"id": 3, "category": "K8s Real-world Problems", "subcategory": "Cluster Configuration Problems", "question": "What should you check to confirm if your system uses cgroup v2?", "score": 3}
+{"id": 4, "category": "K8s Code Commands", "subcategory": "Single-Command Operations", "question": "Which requirement is NOT necessary for using cgroup v2 with Kubernetes?", "score": 4}
+```
+""",
+
+the next data I need you to process is, The output is only allowed to exist in a code box with markdown syntax!Scores and categorisation require particularly careful consideration; high scores determine the quality of the questions, and I don't want low quality questions in my dataset. Classification determines the competence affiliation of the question, and can better judge the competence level of the respondent!the output is in English:
