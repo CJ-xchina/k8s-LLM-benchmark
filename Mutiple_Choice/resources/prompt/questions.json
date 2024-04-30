@@ -8,3 +8,25 @@
 {"id": 8, "category": "K8s Knowledge Base", "subcategory": "Core Concepts", "question": "What are the advantages, suitable scenarios, and characteristics of Kubernetes?", "score": 3}
 {"id": 9, "category": "K8s Knowledge Base", "subcategory": "Core Concepts", "question": "What are the disadvantages or current shortcomings of Kubernetes?", "score": 2}
 {"id": 10, "category": "K8s Knowledge Base", "subcategory": "Core Concepts", "question": "What are some fundamental concepts related to Kubernetes?", "score": 2}
+{"id": 11, "category": "K8s Knowledge Base", "subcategory": "Core Concepts", "question": "Describe the related components of a Kubernetes cluster?", "score": 3}
+{"id": 12, "category": "K8s Knowledge Base", "subcategory": "Core Concepts", "question": "Describe the mechanism of Kubernetes RC (Replication Controller)?", "score": 3}
+{"id": 13, "category": "K8s Knowledge Base", "subcategory": "Network and Service Discovery", "question": "What is the role of kube-proxy?", "score": 3}
+{"id": 14, "category": "K8s Knowledge Base", "subcategory": "Network and Service Discovery", "question": "Describe the principle of kube-proxy using iptables?", "score": 4}
+{"id": 15, "category": "K8s Knowledge Base", "subcategory": "Network and Service Discovery", "question": "Describe the principle of kube-proxy using IPVS?", "score": 4}
+{"id": 16, "category": "K8s Knowledge Base", "subcategory": "Network and Service Discovery", "question": "Describe the similarities and differences between IPVS and iptables in kube-proxy?", "score": 4}
+{"id": 17, "category": "K8s Knowledge Base", "subcategory": "Core Concepts", "question": "What is a static Pod in Kubernetes?", "score": 3}
+{"id": 18, "category": "K8s Knowledge Base", "subcategory": "Core Concepts", "question": "Describe possible states a Pod might be in within Kubernetes?", "score": 3}
+{"id": 19, "category": "K8s Knowledge Base", "subcategory": "Core Concepts", "question": "Describe the main process of creating a Pod in Kubernetes?", "score": 3}
+{"id": 20, "category": "K8s Knowledge Base", "subcategory": "Core Concepts", "question": "Describe the restart strategies for a Pod in Kubernetes?", "score": 3}
+{"id": 21, "category": "K8s Knowledge Base", "subcategory": "Core Concepts", "question": "Describe the methods of health checking for a Pod in Kubernetes?", "score": 3}
+{"id": 22, "category": "K8s Knowledge Base", "subcategory": "Core Concepts", "question": "Describe the common methods for a Kubernetes Pod's LivenessProbe?", "score": 3}
+{"id": 23, "category": "K8s Knowledge Base", "subcategory": "Core Concepts", "question": "Describe common scheduling methods for Kubernetes Pods?", "score": 3}
+{"id": 24, "category": "K8s Knowledge Base", "subcategory": "Core Concepts", "question": "Describe the Kubernetes init container?", "score": 3}
+{"id": 25, "category": "K8s Knowledge Base", "subcategory": "Configuration and Operations", "question": "Describe the upgrade process of a Kubernetes deployment?", "score": 3}
+{"id": 26, "category": "K8s Knowledge Base", "subcategory": "Configuration and Operations", "question": "Describe the upgrade strategies for a Kubernetes deployment?", "score": 3}
+{"id": 27, "category": "K8s Knowledge Base", "subcategory": "Core Concepts", "question": "Describe the resource characteristics of a Kubernetes DaemonSet?", "score": 3}
+{"id": 28, "category": "K8s Knowledge Base", "subcategory": "Performance Optimisation", "question": "Describe the automatic scaling mechanism in Kubernetes?", "score": 3}
+{"id": 29, "category": "K8s Knowledge Base", "subcategory": "Network and Service Discovery", "question": "Describe the types of Kubernetes Services?", "score": 3}
+{"id": 30, "category": "K8s Knowledge Base", "subcategory": "Network and Service Discovery", "question": "Describe the backend distribution strategies of a Kubernetes Service?", "score": 3}
+{"id": 31, "category": "K8s Knowledge Base", "subcategory": "Network and Service Discovery", "question": "Describe a Kubernetes Headless Service?", "score": 3}
+{"id": 32, "category": "K8s Knowledge Base", "subcategory": "Network and Service Discovery", "question": "Describe how external entities can access services within a Kubernetes cluster?", "score": 3}
