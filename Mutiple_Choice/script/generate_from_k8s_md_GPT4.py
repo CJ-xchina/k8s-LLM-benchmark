@@ -8,8 +8,9 @@ from utils.GPT_client import use_client
 
 pyautogui.FAILSAFE = False
 
-status = ''
+status = 'chrome'
 
+time = 0
 import os
 
 
@@ -32,20 +33,33 @@ def process_markdown_files(input_folder, output_file, prompt, log_file='../resou
                     print(f"Skipping {file_path} as it has been processed before.")
                     continue
 
-                print(f"Processing {file_path}..")
+                print(f"Processing {file_path}")
                 with open(file_path, 'r', encoding='utf-8') as file:
                     input_text = file.read()
 
+                if len(input_text) < 300:
+                    continue
                 updated_prompt = prompt + input_text
+                global time, status  # 使用全局变量以便在函数内修改
+
+                # 检查是否需要更改浏览器状态
+                if time % 4 == 0:
+                    status = 'edge' if status == 'chrome' else 'chrome'  # 切换状态
+                    fresh = True
+                    vpn_fresh = True
+                else:
+                    fresh = False
+                    vpn_fresh = False
 
                 try:
-                    content = use_client(updated_prompt, status, only_md_json=True)
+                    content = use_client(updated_prompt, status=status, vpn_fresh=vpn_fresh, fresh=fresh, only_md_json=True)
                 except Exception:
                     return 1
 
+                time = time + 1
                 with open(output_file, 'a', encoding='utf-8') as out_file:
                     out_file.write(content)
-                print(f"Written to {output_file}.")
+                print(f"Written to {output_file}. content is : \n {content}")
 
                 # 将处理过的文件路径添加到日志中
                 with open(log_file, 'a', encoding='utf-8') as log:
@@ -97,18 +111,12 @@ def replace_original_file(original_file, new_file):
 
 # 在脚本开始前暂停5秒以允许准备
 sleep(5)
-input_folder = 'Z:\MY_FIELS\Project\Python\mistral-src\website-main\content\en\docs'
-output_file = '../resources/ops_data_en.jsonl'
+input_folder = 'Z:\MY_FIELS\Project\Python\mistral-src\kubernetes-handbook-master'
+output_file = '../resources/ops_data_en_improve.jsonl'
 with open('../resources/prompt/prompt_extract_multiple_choice.txt', 'r', encoding='utf-8') as file:
     prompt = file.read()
 
-t = 0
 while True:
-    if t % 2 != 0:
-        status = 'chrome'
-    else:
-        status = 'edge'
-    t = t + 1
     ret = process_markdown_files(input_folder, output_file, prompt)
     modify_json_in_place_with_ids(output_file)
     if ret == 0:

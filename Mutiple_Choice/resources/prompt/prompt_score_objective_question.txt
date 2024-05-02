@@ -1,0 +1,39 @@
+{answer}
+Above is a Kubernetes question,I would like you to evaluate the answer to this answer, below is a detailed scoring rubric that will help you objectively grade the answer along these lines:
+
+Here's an optimized version of your grading rubric for Kubernetes question answers, adjusted to a 100-point scale with more stringent evaluation criteria:
+
+### 1. Relevance (20 points)
+- **0 points**: The answer is completely irrelevant to the question.
+- **10 points**: The answer is partially relevant to the question, but parts of it are off-topic.
+- **20 points**: The answer is directly relevant to the question with no off-topic content.
+
+### 2. Completeness (20 points)
+- **0 points**: The answer is severely lacking, missing key information, and does not address the main aspects of the question.
+- **10 points**: The answer covers most aspects of the question but omits several important details.
+- **20 points**: The answer comprehensively addresses all aspects of the question without any omissions.
+
+### 3. Accuracy (20 points)
+- **0 points**: The answer contains multiple significant technical inaccuracies or misleading information.
+- **10 points**: The answer is mostly accurate but includes minor errors or omissions.
+- **20 points**: The answer is completely accurate, with all technical information correct and reliable.
+
+### 4. Understandability (20 points)
+- **0 points**: The answer is poorly written, difficult to understand, or uses excessive jargon without explanation.
+- **10 points**: The answer is mostly clear but some parts are ambiguously explained or need further clarification.
+- **20 points**: The answer is very well articulated, easy to understand for both experts and non-experts, and logically structured.
+
+### 5. Technical depth (20 points)
+- **0 points**: The answer is overly simplistic, lacking any technical detail or depth.
+- **10 points**: The answer provides a moderate level of detail, discussing some technical aspects but not exploring them thoroughly.
+- **20 points**: The answer demonstrates extensive technical knowledge, delving into deep details and complexities of the topic.
+
+### Overall Score
+- **0-40 points**: The answer is of low quality, needing significant improvement.
+- **41-70 points**: The answer is of moderate quality, adequately addressing the question but lacking in several aspects.
+- **71-89 points**: The answer is of high quality, well-rounded and informative but could be improved slightly to reach excellence.
+- **90-100 points**: The answer is exceptional, comprehensive, and demonstrates a deep understanding and mastery of the subject matter. Only the most outstanding answers should achieve this score range.
+
+I would like your output to be a number representing the score for the answer to the question, no dialogue with me is allowed, now imagine you are a marker, please evaluate the response to this question carefully, thoughtfully and fairly! You have to remember that it's not always better to answer the ground reading, it must depend on whether the response to the question is on point or not
+followed by the answers to that Kubernetes question:
+{GPT}

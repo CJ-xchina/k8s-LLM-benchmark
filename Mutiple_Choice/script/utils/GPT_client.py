@@ -51,7 +51,8 @@ def find_and_click(folder_path, time_limit=2, double_click=False):
                 # 移动鼠标并点击
                 pyautogui.moveTo(x, y, duration=0.1)
                 if double_click:
-                    pyautogui.doubleClick()
+                    pyautogui.click()
+                    pyautogui.click()
                 else:
                     pyautogui.click()
                 time.sleep(2)
@@ -110,7 +111,7 @@ def wait_until_image_appears(folder_path, timeout=90, check_interval=0.5):
             min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(result)
 
             # 检查是否找到了足够匹配的图片
-            if max_val >= 0.5:
+            if max_val >= 0.7:
                 return True
 
         # 等待下一次检查
@@ -120,7 +121,7 @@ def wait_until_image_appears(folder_path, timeout=90, check_interval=0.5):
 
 
 
-def use_client(prompt, status, only_md_json=False, vpn_fresh=True):
+def use_client(prompt, status, only_md_json=False, vpn_fresh=True, long_output=False, fresh=True):
     # 点击输入栏
     click_input_line = f'../images/click_input_line'
     # 产生对话按钮
@@ -168,7 +169,9 @@ def use_client(prompt, status, only_md_json=False, vpn_fresh=True):
         find_and_click(ms, time_limit=3, double_click=True)
 
     # 刷新
-    find_and_click(fresh_button)
+    if fresh:
+        find_and_click(fresh_button)
+
     # 找到对话
     find_and_click(target_chat_bot)
     # 打开新对话
@@ -179,24 +182,30 @@ def use_client(prompt, status, only_md_json=False, vpn_fresh=True):
     find_and_click_paste(click_input_line, prompt=prompt)
 
     # 出现网络故障，无法发送消息
-    if not wait_until_image_appears(generating_button, timeout=10):
+    if not wait_until_image_appears(generating_button, timeout=4):
         print("Error occur because of network")
+        # 点击浏览器
+        find_and_click(status_map[status])
         raise Exception("Error occur because of network")
+
     # GPT4.0 回答已经达到上限
-    if wait_until_image_appears(max_time, timeout=10):
+    if wait_until_image_appears(max_time, timeout=4):
         print("time access limit in GPT4.0 model , wait 30 minutes")
+        # 点击浏览器
+        find_and_click(status_map[status])
         raise Exception("time access limit in GPT4.0 model , wait 30 minutes")
 
-    # 等待生成完毕
-    
-    (start_intput)  # Check the specific pixel for color change
+    wait_until_image_appears(start_intput, timeout=60)
 
-    # 执行最多1次继续生成
-    for i in range(2):
-        pyautogui.click(1522, 883)
-        wait_until_image_appears(start_intput)
+    if long_output:
+        # 执行最多1次继续生成
+        for i in range(2):
+            pyautogui.click(1522, 883)
+            wait_until_image_appears(start_intput)
+
+
     find_and_click(title)
-    pyautogui.scroll(50)
+    pyautogui.scroll(20)
     find_and_click(go_to_down_button)
     find_and_click(paste_button)
     content = pyperclip.paste()
@@ -212,5 +221,6 @@ def use_client(prompt, status, only_md_json=False, vpn_fresh=True):
             content = content[start_idx:end_idx].strip()
         else:
             content = ''
-
+    # 点击浏览器
+    find_and_click(status_map[status])
     return content
