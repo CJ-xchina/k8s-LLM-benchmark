@@ -4,7 +4,7 @@ from time import sleep
 
 import pyautogui
 
-from utils.GPT_client import use_client
+from utils.client import use_client
 
 pyautogui.FAILSAFE = False
 

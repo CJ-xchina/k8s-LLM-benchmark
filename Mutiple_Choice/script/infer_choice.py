@@ -2,8 +2,7 @@ import json
 
 import pandas as pd
 
-from utils.GPT_client import use_client
-
+from utils.client import generate_completion
 
 
 def read_csv(file_path):
@@ -35,7 +34,9 @@ def find_and_write(df, input_data, model_name, prompt_text, fresh=True):
         question_data = next(item for item in input_data if item["id"] == empty_id)
         prompt_text = prompt_text.format(**question_data)
         try:
-            simulated_output = use_client(prompt_text, status='chrome', vpn_fresh=False, fresh=fresh)
+            # simulated_output = use_client(prompt_text, status='chrome', vpn_fresh=False, fresh=fresh)
+            simulated_output = generate_completion(prompt_text)
+            print(f"model output is : {simulated_output}")
         except Exception as e:
             simulated_output = ''
             print(f"An error occurred: {e}")
@@ -65,9 +66,8 @@ def main(csv_file_path, json_file_path, model_name, infer_type='multiple_choice'
     with open(prompt_file_path, 'r', encoding='utf-8') as f:
         prompt_text = f.read()
 
-
     # 添加新行
-    df = new_json_line(df,input_data)
+    df = new_json_line(df, input_data)
 
     if model_name not in df.columns:
         df[model_name] = None
@@ -96,8 +96,9 @@ def new_json_line(df, json_data):
             df = df._append(new_row, ignore_index=True)
     return df
 
+
 if __name__ == "__main__":
     csv_file_path = "../resources/result.csv"
     json_file_path = "../resources/ops_data_en_improve.jsonl"
-    model_names = "GPT-3.5"
+    model_names = "Mistral-7B-instruct-v2"
     main(csv_file_path, json_file_path, model_names, infer_type='multiple_choice')

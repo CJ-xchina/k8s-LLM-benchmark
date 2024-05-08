@@ -4,9 +4,9 @@ import cv2
 import numpy as np
 import pyautogui
 import pyperclip
+import requests
+from pydantic import BaseModel
 
-
-import os
 
 def find_and_click(folder_path, time_limit=2, double_click=False):
     start_time = time.time()  # 开始时间
@@ -46,8 +46,6 @@ def find_and_click(folder_path, time_limit=2, double_click=False):
                 w, h = template.shape[:-1][::-1]
                 x, y = max_loc[0] + w // 2, max_loc[1] + h // 2
 
-        
-        
                 # 移动鼠标并点击
                 pyautogui.moveTo(x, y, duration=0.1)
                 if double_click:
@@ -62,7 +60,6 @@ def find_and_click(folder_path, time_limit=2, double_click=False):
         time.sleep(0.5)
 
 
-
 def find_and_click_paste(image_path, prompt):
     find_and_click(image_path)
     # pyautogui.typewrite(prompt)
@@ -71,6 +68,7 @@ def find_and_click_paste(image_path, prompt):
 
 
 import os
+
 
 def wait_until_image_appears(folder_path, timeout=90, check_interval=0.5):
     """
@@ -120,7 +118,6 @@ def wait_until_image_appears(folder_path, timeout=90, check_interval=0.5):
     return False
 
 
-
 def use_client(prompt, status, only_md_json=False, vpn_fresh=True, long_output=False, fresh=True):
     # 点击输入栏
     click_input_line = f'../images/click_input_line'
@@ -158,7 +155,6 @@ def use_client(prompt, status, only_md_json=False, vpn_fresh=True, long_output=F
     # 取消系统页面
     find_and_click(sys_cancel)
 
-
     # 点击浏览器
     find_and_click(status_map[status])
 
@@ -176,13 +172,13 @@ def use_client(prompt, status, only_md_json=False, vpn_fresh=True, long_output=F
     find_and_click(target_chat_bot)
     # 打开新对话
     find_and_click(new_chat_button)
-    
+
     pyperclip.copy(prompt)
-    
+
     find_and_click_paste(click_input_line, prompt=prompt)
 
     # 出现网络故障，无法发送消息
-    if not wait_until_image_appears(generating_button, timeout=4):
+    if wait_until_image_appears(generating_button, timeout=4):
         print("Error occur because of network")
         # 点击浏览器
         find_and_click(status_map[status])
@@ -202,7 +198,6 @@ def use_client(prompt, status, only_md_json=False, vpn_fresh=True, long_output=F
         for i in range(2):
             pyautogui.click(1522, 883)
             wait_until_image_appears(start_intput)
-
 
     find_and_click(title)
     pyautogui.scroll(20)
@@ -224,3 +219,47 @@ def use_client(prompt, status, only_md_json=False, vpn_fresh=True, long_output=F
     # 点击浏览器
     find_and_click(status_map[status])
     return content
+
+
+class CompletionRequest(BaseModel):
+    prompt: str
+    temperature: float = 0.2
+    top_p: float = 0.9
+    top_k: int = 40
+    max_length: int = 512
+    num_beams: int = 1
+    repetition_penalty: float = 1.1
+    do_sample: bool = True
+
+
+def generate_completion(prompt: str):
+    # Define the URL of the API endpoint
+    url = "http://mp-552.default.ai.iscas:31050/predict"
+
+    # Create an instance of the request body using passed prompt
+    data = CompletionRequest(
+        prompt=prompt,
+        max_length=1100,
+        num_beams=20,
+        top_p=0.9,
+        top_k=20,
+    )
+
+    # Convert the Pydantic model to a dictionary and then to JSON
+    json_data = data.dict()
+
+    # Make a POST request to the server
+    response = requests.post(url, json=json_data)
+
+    # Check if the request was successful
+    if response.status_code == 200:
+        response_json = response.json()
+        last_inst_index = response_json['choices'][0]['text'].rfind("[/INST]")
+        last_s_index = response_json['choices'][0]['text'].rfind("</s>")
+        str_back = response_json['choices'][0]['text'][last_inst_index + 7:last_s_index].strip()
+        if len(str_back) > 1:
+            str_back = ''
+        return str_back
+    else:
+        print("Failed to get response:", response.status_code)
+        raise Exception('API returned non-successful status')

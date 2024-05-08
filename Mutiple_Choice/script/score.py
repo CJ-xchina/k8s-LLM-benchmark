@@ -1,6 +1,6 @@
 import pandas as pd
 
-from utils.GPT_client import use_client
+from utils.client import use_client
 
 prompt_file_path = '../resources/prompt/prompt_score_objective_question.txt'
 

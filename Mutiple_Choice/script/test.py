@@ -1,34 +1,22 @@
-import json
-import pandas as pd
-
-# 加载JSON数据，每行一个JSON对象
-def load_json(json_file):
-    question_map = {}
-    with open(json_file, 'r', encoding='utf-8') as file:
-        for line in file:
-            data = json.loads(line)
-            question_map[data['id']] = data['question']
-    return question_map
-
-# 加载CSV文件，并合并问题
-def merge_questions_to_csv(json_file, csv_file, output_csv_file):
-    # 加载json数据，构建id到question的映射
-    question_map = load_json(json_file)
-
-    # 读取CSV文件
-    df = pd.read_csv(csv_file)
-
-    # 根据ID将问题从JSON映射到CSV的answer列
-    df['answer'] = df['id'].map(question_map)
-
-    # 保存修改后的CSV文件
-    df.to_csv(output_csv_file, index=False)
+# Given data
+data = {
+    "User A": [2.5, 2.5, 3.5, 3.0, 4.5],
+    "User B": [3.0, 3.5, 2.0, 4.0, 1.5]
+}
 
 
-# 指定文件路径
-json_file = '../resources/questions.json'
-csv_file = '../resources/result_obj.csv'
-output_csv_file = csv_file
+# Calculate cosine similarity
+def cosine_similarity(user1, user2):
+    dot_product = sum(a * b for a, b in zip(user1, user2))
+    magnitude_user1 = sum(a ** 2 for a in user1) ** 0.5
+    magnitude_user2 = sum(a ** 2 for a in user2) ** 0.5
+    return dot_product / (magnitude_user1 * magnitude_user2)
 
-# 调用函数
-merge_questions_to_csv(json_file, csv_file, output_csv_file)
+
+# Extract user data
+user_a_ratings = data["User A"]
+user_b_ratings = data["User B"]
+
+# Calculate and display cosine similarity
+similarity = cosine_similarity(user_a_ratings, user_b_ratings)
+print(similarity)
