@@ -16,7 +16,7 @@ status = 'chrome'
 # 定义一个函数，使用GPT-3.5获取分数
 def get_gpt_score(text):
     global time, status  # 使用全局变量以便在函数内修改
-    prompt = prompt_text.format(answer=text['answer'], GPT=text['GPT-3.5'])
+    prompt = prompt_text.format(answer=text['answer'], GPT=text['Mistral-7B-instruct-v2'])
 
     # 检查是否需要更改浏览器状态
     if time % 4 == 0:
@@ -40,9 +40,9 @@ def get_gpt_score(text):
 
 while True:
     for index, row in data.iterrows():
-        if pd.isna(row['GPT-3.5_score']):
+        if pd.isna(row['Mistral-7B-instruct-v2_score']):
             score = get_gpt_score(row)
-            data.at[index, 'GPT-3.5_score'] = score
+            data.at[index, 'Mistral-7B-instruct-v2_score'] = score
             # 每次循环保存一次数据
             data.to_csv('../resources/result_obj.csv', index=False)
 

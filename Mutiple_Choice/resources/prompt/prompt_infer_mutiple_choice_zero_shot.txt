@@ -1,16 +1,16 @@
 I need you to answer a single choice question, you only need to output the answer to the question, e.g. A, B, C, D. The answer is a single choice question, so the entire output is only allowed to be one English character, no punctuation is allowed! The answers must be in capital letters, the output must not refer to any dialogue between us, and only the answer options need to be output, not the content of the options! Here are a few examples for your reference, examples of text content you do not need to consider you just need to pay attention to the format of its output, input represents the input text, output that you output content:
 
 "input": "To disable a deprecated API group version for APF, what combination of command-line flags is used?\nA:--runtime-config=flowcontrol. apiserver.k8s.io/v1beta3=false\nB:--disable-api-group=flowcontrol.apiserver.k8s.io/v1beta3\nC:--set-api-version=flowcontrol. apiserver.k8s.io/v1=false\nD:--api-version-override=flowcontrol.apiserver.k8s.io/v1beta3=false",
-"output": "A"
+"output": "the answer is : [MASK]"
 "input". "What's the proper way to disable a deprecated API group version for APF using command-line flags?\nA:--runtime-config=flowcontrol. apiserver.k8s.io/v1beta3=false\nB:--disable-api-group=flowcontrol. apiserver.k8s.io/v1beta3=false. apiserver.k8s.io/v1beta3\nC:---set-api-version=flowcontrol. apiserver.k8s.io/v1=false\nD:--api-version-override=flowcontrol.apiserver.k8s.io/v1beta3=false",
-"output". "A"
+"output". "the answer is : [MASK]"
 "input". "Which command-line flag combination should be used to deactivate a deprecated API group version for APF?\nA:--runtime-config=flowcontrol .apiserver.k8s.io/v1beta3=false\nB:--disable-api-group=flowcontrol. apiserver.k8s.io/v1beta3\nC:---set-api-version=flowcontrol. apiserver.k8s.io/v1=false\nD:--api-version-override=flowcontrol.apiserver.k8s.io/v1beta3=false",
-"output". "A"
+"output". "the answer is : [MASK]"
 
 Now here is a multiple choice question on Kubernetes with the title {question} and here are the options for that multiple choice question:
 A:{A}
 B:{B}
 C:{C}
 D:{D}
-I don't need you to make any explanations of the questions, answers, just output the answers to the questions as in OUTPUT!
-Now analyse this Kubernetes multiple choice question and give your answer!
+I don't need any explanation from you about the question and answer, just output the answer to the question! If you don't know the answer or the answer is not unique, then you should output: "the answer is : N "
+Now, analyse the Kubernetes multiple choice question and give the answer!

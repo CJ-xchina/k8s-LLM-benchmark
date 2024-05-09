@@ -1,4 +1,6 @@
+import re
 import time
+from collections import Counter
 
 import cv2
 import numpy as np
@@ -74,8 +76,8 @@ def wait_until_image_appears(folder_path, timeout=90, check_interval=0.5):
     """
     等待直到指定的图片出现在屏幕上。
     :param folder_path: 包含待匹配图片的文件夹路径
-    :param timeout: 等待的最长时间（秒）
-    :param check_interval: 检查间隔时间（秒）
+    :param timeout: 等待的最长时间(秒)
+    :param check_interval: 检查间隔时间(秒)
     :return: 如果找到图片则返回True，超时则返回False
     """
     start_time = time.time()  # 开始时间记录
@@ -232,6 +234,9 @@ class CompletionRequest(BaseModel):
     do_sample: bool = True
 
 
+
+
+
 def generate_completion(prompt: str):
     # Define the URL of the API endpoint
     url = "http://mp-552.default.ai.iscas:31050/predict"
@@ -239,7 +244,8 @@ def generate_completion(prompt: str):
     # Create an instance of the request body using passed prompt
     data = CompletionRequest(
         prompt=prompt,
-        max_length=1100,
+        temperature=0.85,
+        max_length=1500,
         num_beams=20,
         top_p=0.9,
         top_k=20,
@@ -254,12 +260,7 @@ def generate_completion(prompt: str):
     # Check if the request was successful
     if response.status_code == 200:
         response_json = response.json()
-        last_inst_index = response_json['choices'][0]['text'].rfind("[/INST]")
-        last_s_index = response_json['choices'][0]['text'].rfind("</s>")
-        str_back = response_json['choices'][0]['text'][last_inst_index + 7:last_s_index].strip()
-        if len(str_back) > 1:
-            str_back = ''
-        return str_back
+        return response_json['choices'][0]['text']
     else:
         print("Failed to get response:", response.status_code)
         raise Exception('API returned non-successful status')
