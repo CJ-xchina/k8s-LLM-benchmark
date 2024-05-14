@@ -30,6 +30,7 @@ def input_json(file_path):
 
 def extract_answer(response_answer):
     patterns = [
+        r"^([A-DN])",
         r"^选([A-DN])",
         r"^选项([A-DN])",
         r"答案是\s*选?项?\s?([A-DN])",
@@ -186,10 +187,11 @@ def find_and_write(df, input_data, model_name, prompt_text, fresh=True, multiple
             # simulated_output = use_client(prompt_text, status='chrome', vpn_fresh=False, fresh=fresh)
             print(f"prompt is : {prompt_text}")
             simulated_output = generate_completion(prompt_text)
-            last_inst_index = simulated_output.rfind("[/INST]")
-            last_s_index = simulated_output.rfind("</s>")
-            str_back = simulated_output[last_inst_index + 7:last_s_index].strip()
+            # last_inst_index = simulated_output.rfind("[/INST]")
+            # last_s_index = simulated_output.rfind("</s>")
+            # str_back = simulated_output[last_inst_index + 7:last_s_index].strip()
 
+            str_back = simulated_output
             # 提取选择题答案
             if multiple_choice:
                 str_back = extract_answer(str_back)
@@ -259,5 +261,5 @@ def new_json_line(df, json_data):
 if __name__ == "__main__":
     csv_file_path = "../resources/result_obj.csv"
     json_file_path = "../resources/questions.json"
-    model_names = "Mistral-7B-instruct-v2"
+    model_names = "LLama3-base"
     main(csv_file_path, json_file_path, model_names, infer_type='objective_question')

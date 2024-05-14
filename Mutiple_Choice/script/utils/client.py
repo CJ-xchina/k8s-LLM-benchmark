@@ -239,7 +239,7 @@ class CompletionRequest(BaseModel):
 
 def generate_completion(prompt: str):
     # Define the URL of the API endpoint
-    url = "http://mp-552.default.ai.iscas:31050/predict"
+    url = "http://mp-613.default.ai.iscas:31050/predict"
 
     # Create an instance of the request body using passed prompt
     data = CompletionRequest(

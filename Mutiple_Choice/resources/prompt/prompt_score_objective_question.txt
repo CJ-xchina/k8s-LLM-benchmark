@@ -37,3 +37,5 @@ Here's an optimized version of your grading rubric for Kubernetes question answe
 I would like your output to be a number representing the score for the answer to the question, no dialogue with me is allowed, now imagine you are a marker, please evaluate the response to this question carefully, thoughtfully and fairly! You have to remember that it's not always better to answer the ground reading, it must depend on whether the response to the question is on point or not
 followed by the answers to that Kubernetes question:
 {GPT}
+
+Please output a number from 1-100 to indicate your judgement score, nothing else is allowed! Please output a number from 1-100 to indicate your judgement score, nothing else is allowed!
