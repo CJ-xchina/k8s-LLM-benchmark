@@ -209,6 +209,7 @@ def use_client(prompt, status, only_md_json=False, vpn_fresh=True, long_output=F
 
     if content == prompt:
         print("output equals input Error")
+        find_and_click(status_map[status])
         raise Exception("output equals input Error")
 
     if only_md_json:

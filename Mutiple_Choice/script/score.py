@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 
 
-def calculate_accuracy_per_category_subcategory(csv_file, jsonl_file, save_file=None):
+def calculate_accuracy_per_category_subcategory(csv_file, jsonl_file):
     # 读取 CSV 文件到 DataFrame
     df = pd.read_csv(csv_file)
     # 确保 'answer' 列存在
@@ -29,17 +29,23 @@ def calculate_accuracy_per_category_subcategory(csv_file, jsonl_file, save_file=
         }
 
         # 计算每个 category 和 subcategory 的准确率
-        for category, subcategory_df in df.groupby('category'):
-            for subcategory, _ in subcategory_df.groupby('subcategory'):
+        for category, category_df in df.groupby('category'):
+            correct_predictions = (category_df['answer'] == category_df[model]).sum()
+            total_predictions = category_df.shape[0]
+            if total_predictions > 0:
+                cat_acc = correct_predictions / total_predictions * 100
+                model_acc[model]['category'][category] = cat_acc
+            else:
+                model_acc[model]['category'][category] = 0
+
+            for subcategory, subcategory_df in category_df.groupby('subcategory'):
                 # 计算当前 category 和 subcategory 下的准确率
                 correct_predictions = (subcategory_df['answer'] == subcategory_df[model]).sum()
-                total_predictions = len(subcategory_df)
+                total_predictions = subcategory_df.shape[0]
                 if total_predictions > 0:
                     cat_acc = correct_predictions / total_predictions * 100
-                    model_acc[model]['category'][category] = cat_acc
                     model_acc[model]['subcategory'][(category, subcategory)] = cat_acc
                 else:
-                    model_acc[model]['category'][category] = 0
                     model_acc[model]['subcategory'][(category, subcategory)] = 0
     return model_acc
 
@@ -67,6 +73,14 @@ def plot_subcategory_accuracy(accuracy):
         n_subcategories = len(subcategories)
         bar_width = 0.15
         index = np.arange(n_subcategories)
+
+
+        # 添加随机猜测水平的虚线
+        plt.axhline(y=25, color='red', linestyle='--', label='Random Chance')
+
+        # 添加每隔10%的虚线
+        # for i in range(30, 101, 10):  # 从30%到100%，每隔10%
+        #     plt.axhline(y=i, color='gray', linestyle='--', linewidth=0.5)
 
         for i, model in enumerate(models):
             subcat_acc = [accuracy[model]['subcategory'].get((category, subcat), 0) for subcat in subcategories]
@@ -101,16 +115,72 @@ def plot_accuracy(accuracy):
     plot_subcategory_accuracy(accuracy)
 
 
+def plot_category_accuracy(accuracy):
+    # Extract models and categories
+    models = list(accuracy.keys())
+    categories = list(accuracy[models[0]]['category'].keys())
+
+    # Sort categories for consistent plotting
+    categories = sorted(categories)
+
+    # Determine the number of categories, subcategories, and models
+    n_categories = len(categories)
+    n_models = len(models)
+
+    # Plotting
+    fig, ax = plt.subplots(figsize=(14, 8))
+
+    # Define the width of the bars and the position of each bar
+    bar_width = 0.25
+    index = np.arange(n_categories)
+
+    # Color map for the models
+    cmap = plt.get_cmap('tab10')
+    model_colors = [cmap(i) for i in range(len(models))]
+
+    # Plot each subcategory for each model as a group of bars
+    for i, model in enumerate(models):
+        model_acc = [accuracy[model]['category'].get(category, 0) for category in categories]
+        bar_plot = ax.bar(index + i * bar_width, model_acc, bar_width, label=model, color=model_colors[i])
+
+        # Add the value labels on the bars
+        for j, (bar, acc) in enumerate(zip(bar_plot, model_acc)):
+            height = bar.get_height()
+            ax.text(bar.get_x() + bar.get_width() / 2, height, f'{acc:.3f}%',
+                    ha='center', va='bottom')
+
+    # Adding labels, title, and legend
+    ax.set_xlabel('Category')
+    ax.set_ylabel('Accuracy (%)')
+    ax.set_title('Category-wise Accuracy Comparison Across Models')
+    ax.set_xticks(index + bar_width * (n_models - 1) / 2)
+    ax.set_xticklabels(categories, rotation=45, ha='right', fontsize=10)
+
+    # Adjust legend to display model names clearly
+    legend = ax.legend(loc='upper left', bbox_to_anchor=(1, 1))
+
+    # Set the y-axis limit to 0-100
+    ax.set_ylim(0, 100)
+
+    # Save the figure and show it
+    plt.tight_layout()
+    plt.savefig('../resources/result/category_wise_accuracy.png')
+    plt.show()
+
+
+
+# 选择题部分
+
 # 路径到 CSV 文件和 JSONL 文件
 csv_file = "../resources/result.csv"
 jsonl_file = "../resources/ops_data_en_improve.jsonl"
-
-# 保存图表到文件的路径
-save_file = "../resources/accuracy_plots.png"
-
 # 计算准确率并绘制柱状图
-accuracy = calculate_accuracy_per_category_subcategory(csv_file, jsonl_file, save_file)
+accuracy = calculate_accuracy_per_category_subcategory(csv_file, jsonl_file)
 plot_accuracy(accuracy)
+# Now you can call this function after calculating the accuracy
+plot_category_accuracy(accuracy)
+# 问答题部分
+
 
 
 
