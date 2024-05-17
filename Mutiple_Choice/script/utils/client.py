@@ -1,6 +1,4 @@
-import re
 import time
-from collections import Counter
 
 import cv2
 import numpy as np
@@ -235,21 +233,19 @@ class CompletionRequest(BaseModel):
     do_sample: bool = True
 
 
-
-
-
 def generate_completion(prompt: str):
     # Define the URL of the API endpoint
-    url = "http://mp-613.default.ai.iscas:31050/predict"
+    url = "http://mp-635.default.ai.iscas:31050/predict"
 
     # Create an instance of the request body using passed prompt
     data = CompletionRequest(
         prompt=prompt,
         temperature=0.85,
-        max_length=1500,
+        max_length=1000,
         num_beams=20,
         top_p=0.9,
         top_k=20,
+        repetition_penalty=10
     )
 
     # Convert the Pydantic model to a dictionary and then to JSON

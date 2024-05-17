@@ -50,7 +50,7 @@ def process_markdown_files(input_folder, output_file, prompt, log_file='../resou
                 else:
                     fresh = False
                     vpn_fresh = False
-
+                status = 'edge'
                 try:
                     content = use_client(updated_prompt, status=status, vpn_fresh=vpn_fresh, fresh=fresh, only_md_json=True)
                 except Exception:
@@ -111,7 +111,7 @@ def replace_original_file(original_file, new_file):
 
 # 在脚本开始前暂停5秒以允许准备
 sleep(5)
-input_folder = 'Z:\MY_FIELS\Project\Python\mistral-src\kubernetes-handbook-master'
+input_folder = 'Z:\MY_FIELS\Project\Python\mistral-src\k8s-go'
 output_file = '../resources/ops_data_en_improve.jsonl'
 with open('../resources/prompt/prompt_extract_multiple_choice.txt', 'r', encoding='utf-8') as file:
     prompt = file.read()

@@ -12,5 +12,5 @@ A:{A}
 B:{B}
 C:{C}
 D:{D}
-I don't need any explanation from you about the question and answer, just output the answer to the question! If you don't know the answer or the answer is not unique, then you should output: "the answer is : N "
+I don't need any explanation from you about the question and answer, just output the answer to the question!
 Now, analyse the Kubernetes multiple choice question and give the answer!

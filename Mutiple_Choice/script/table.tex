@@ -1,0 +1,34 @@
+\documentclass{article}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{geometry}
+
+% 调整页面布局，增加左边距
+\geometry{left=1.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm}
+
+\begin{document}
+
+\begin{longtable}{lccccc}
+\caption{Model Performance on K8s Tasks} \\
+\label{2} \\
+\toprule
+\multicolumn{1}{c}{Model} & \multicolumn{1}{c}{K8s Code Commands} & \multicolumn{1}{c}{K8s Knowledge Base} & \multicolumn{1}{c}{K8s Real-World Problems} & \multicolumn{1}{c}{Average} \\
+\midrule
+\endfirsthead
+\caption[]{Model Performance on K8s Tasks (continued)} \\
+\toprule
+\multicolumn{1}{c}{Model} & \multicolumn{1}{c}{K8s Code Commands} & \multicolumn{1}{c}{K8s Knowledge Base} & \multicolumn{1}{c}{K8s Real-World Problems} & \multicolumn{1}{c}{Average} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{5}{r}{Continued on next page} \\
+\midrule
+\endfoot
+\bottomrule
+\endlastfoot
+GPT-3.5 & 85.764706 & 90.024306 & 83.238095 & 88.420398 \\
+Mistral-7B-instruct-v2 & 78.941176 & 82.218213 & 72.095238 & 80.230864 \\
+LLama3-base & 68.941176 & 75.156357 & 71.095238 & 73.741975 \\
+\end{longtable}
+
+\end{document}
