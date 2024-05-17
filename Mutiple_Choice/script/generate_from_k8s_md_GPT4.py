@@ -27,7 +27,7 @@ def process_markdown_files(input_folder, output_file, prompt, log_file='../resou
     total = 0
     for root, dirs, files in os.walk(input_folder):
         for file_name in files:
-            if file_name.endswith('.md'):
+            # if file_name.endswith('.md'):
                 file_path = os.path.join(root, file_name)
                 if file_path in processed_files:
                     print(f"Skipping {file_path} as it has been processed before.")

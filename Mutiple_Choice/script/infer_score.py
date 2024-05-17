@@ -15,68 +15,70 @@ time = 0
 status = 'chrome'
 
 
-# 定义一个函数，使用GPT-3.5获取分数
 def get_gpt_scores(text, score_column):
     column = score_column.replace('_score', '')
-    global time, status  # 使用全局变量以便在函数内修改
+    global time, status
     prompt = prompt_text.format(answer=text['answer'], GPT=text[column])
 
     # 检查是否需要更改浏览器状态
     if time % 4 == 0:
-        status = 'edge' if status == 'chrome' else 'chrome'  # 切换状态
+        status = 'edge' if status == 'chrome' else 'chrome'
         fresh = True
         vpn_fresh = True
     else:
         fresh = False
         vpn_fresh = False
 
-    scores = []
-    status = 'edge'
+    # 从已存在的分数中筛选并清理 NaN
+    existing_scores = [score for score in str(text[score_column]).split(',') if
+                       score.strip().lower() != 'nan' and score.strip()]
+
+    # 如果已经有三个分数，则不需要再评估
+    if len(existing_scores) >= 3:
+        return existing_scores
+
+    # 否则，继续获取新的分数
     try:
-        # 根据已有数据情况决定获取分数的次数
-        existing_scores = str(text[score_column]).split(',') if pd.notna(text[score_column]) else []
-        num_scores = 3 - len(existing_scores)
-        for _ in range(num_scores):
-            simulated_output = use_client(prompt, status=status, vpn_fresh=vpn_fresh, fresh=fresh)
-            score = extract_score(simulated_output)
-            if score is not None:
-                scores.append(score)
+        simulated_output = use_client(prompt, status=status, vpn_fresh=vpn_fresh, fresh=fresh)
+        score = extract_score(simulated_output)
+        if score is not None:
+            existing_scores.append(score)
     except Exception as e:
         print(f"An error occurred: {e}")
-        scores = [None, None, None]
+        # 如果发生错误，返回已有的分数列表
+        return existing_scores
 
-    time += 1  # 每次调用后递增time
-
-    return existing_scores + scores
+    time += 1
+    return existing_scores
 
 
 def extract_score(output):
     output = str(output)
-    # 尝试匹配 "Overall Score: 100" 格式
     match = re.search(r'Overall Score: (\d+)', output)
     if match:
         return int(match.group(1))
-
-    # 尝试匹配单独的数字
     match = re.search(r'\b(\d{1,2}|100)\b', output)
     if match:
         return int(match.group(1))
-
-    # 如果没有找到匹配的分数，返回 None 或者你想要的默认值
     return None
 
 
-# 获取所有以'_score'结尾的列
 score_columns = [col for col in data.columns if col.endswith('_score')]
+for column in score_columns:
+    data[column] = data[column].astype(str)
 
-# 获取并保存分数
+# 对每个需要评估的列进行评估，直到达到三次评估为止
 for index, row in data.iterrows():
+    updates = False
     for column in score_columns:
-        if pd.isna(row[column]) or len(str(row[column]).split(',')) < 3:
-            if pd.isna(row[column.replace('_score', '')]):
-                continue
-            scores = get_gpt_scores(row, column)
-            data.at[index, column] = ','.join(map(str, filter(None, scores)))  # 过滤掉 None 值
-            # 每次循环保存一次数据
-            data.to_csv('../resources/result_obj.csv', index=False)
-            break  # 获取到分数后直接跳出循环
+        if pd.isna(row[column.replace('__score', '')]):
+            continue
+        scores = get_gpt_scores(row, column)
+        updated_scores = ','.join(map(str, scores))
+        print(f"打分为：{updated_scores}")
+        if data.at[index, column] != updated_scores:
+            data.at[index, column] = updated_scores
+            updates = True
+    if updates:
+        # 每次循环后保存数据，确保更新被持久化
+        data.to_csv('../resources/result_obj.csv', index=False)

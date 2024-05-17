@@ -180,11 +180,11 @@ def use_client(prompt, status, only_md_json=False, vpn_fresh=True, long_output=F
     find_and_click_paste(click_input_line, prompt=prompt)
 
     # 出现网络故障，无法发送消息
-    if wait_until_image_appears(generating_button, timeout=4):
-        print("Error occur because of network")
-        # 点击浏览器
-        find_and_click(status_map[status])
-        raise Exception("Error occur because of network")
+    # if wait_until_image_appears(generating_button, timeout=4):
+    #     print("Error occur because of network")
+    #     # 点击浏览器
+    #     find_and_click(status_map[status])
+    #     raise Exception("Error occur because of network")
 
     # GPT4.0 回答已经达到上限
     if wait_until_image_appears(max_time, timeout=4):
