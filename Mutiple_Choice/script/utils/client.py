@@ -43,7 +43,7 @@ def find_and_click(folder_path, time_limit=2, double_click=False):
             min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(result)
 
             # 如果匹配值过低，表示没有找到图片
-            if max_val >= 0.8:
+            if max_val >= 0.85:
                 # 计算目标位置
                 w, h = template.shape[:-1][::-1]
                 x, y = max_loc[0] + w // 2, max_loc[1] + h // 2
@@ -55,7 +55,7 @@ def find_and_click(folder_path, time_limit=2, double_click=False):
                     pyautogui.click()
                 else:
                     pyautogui.click()
-                time.sleep(2)
+                time.sleep(1)
                 return True
 
         # 等待0.5秒后再次尝试
@@ -63,10 +63,11 @@ def find_and_click(folder_path, time_limit=2, double_click=False):
 
 
 def find_and_click_paste(image_path, prompt):
-    find_and_click(image_path)
+    res = find_and_click(image_path)
     # pyautogui.typewrite(prompt)
     pyautogui.hotkey('ctrl', 'v')
     pyautogui.press('enter')
+    return res
 
 
 import os
@@ -111,7 +112,7 @@ def wait_until_image_appears(folder_path, timeout=90, check_interval=0.5):
             min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(result)
 
             # 检查是否找到了足够匹配的图片
-            if max_val >= 0.7:
+            if max_val >= 0.85:
                 return True
 
         # 等待下一次检查
@@ -150,6 +151,9 @@ def use_client(prompt, status, only_md_json=False, vpn_fresh=True, long_output=F
     max_time = f'../images/max_time'
     ms = f'../images/ms'
 
+    # 继续生存
+    continue_generation = f'../images/continue_generation'
+    
     status_map = {
         'chrome': '../images/chrome',
         'edge': '../images/edge'
@@ -162,9 +166,9 @@ def use_client(prompt, status, only_md_json=False, vpn_fresh=True, long_output=F
 
     if vpn_fresh:
         # 刷新vpn网络
-        find_and_click(refresh_vpn, time_limit=3)
+        find_and_click(refresh_vpn, time_limit=2)
         time.sleep(7)
-        find_and_click(ms, time_limit=3, double_click=True)
+        find_and_click(ms, time_limit=2, double_click=True)
 
     # 刷新
     if fresh:
@@ -187,22 +191,41 @@ def use_client(prompt, status, only_md_json=False, vpn_fresh=True, long_output=F
     #     raise Exception("Error occur because of network")
 
     # GPT4.0 回答已经达到上限
-    if wait_until_image_appears(max_time, timeout=4):
-        print("time access limit in GPT4.0 model , wait 30 minutes")
+    # if wait_until_image_appears(max_time, timeout=3):
+    #     print("time access limit in GPT4.0 model , wait 30 minutes")
+    #     # 点击浏览器
+    #     find_and_click(status_map[status])
+    #     raise Exception("time access limit in GPT4.0 model , wait 30 minutes")
+    time.sleep(5)
+    if find_and_click(click_input_line) == False:
+        print("Error occur because of errors")
+        find_and_click(fresh_button)
         # 点击浏览器
         find_and_click(status_map[status])
-        raise Exception("time access limit in GPT4.0 model , wait 30 minutes")
-
+        raise Exception("Error occur because of network")
+    
+    
     wait_until_image_appears(start_intput, timeout=60)
 
-    if long_output:
-        # 执行最多1次继续生成
-        for i in range(2):
-            pyautogui.click(1522, 883)
+    if long_output == True:
+        while find_and_click(continue_generation) == True :
+            time.sleep(2)
             wait_until_image_appears(start_intput)
+            
 
+    
     find_and_click(title)
     pyautogui.scroll(20)
+    
+        # 无法定位到输入栏，认为出现错误！
+    if find_and_click(click_input_line) == False:
+        print("Error occur because of errors")
+        find_and_click(fresh_button)
+        # 点击浏览器
+        find_and_click(status_map[status])
+        raise Exception("Error occur because of network")
+    
+    
     find_and_click(go_to_down_button)
     find_and_click(paste_button)
     content = pyperclip.paste()
