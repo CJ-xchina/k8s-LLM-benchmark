@@ -34,38 +34,48 @@ def process_markdown_files(input_folder, output_file, prompt, log_file='../resou
                     continue
 
                 print(f"Processing {file_path}")
-                with open(file_path, 'r', encoding='utf-8') as file:
-                    input_text = file.read()
-
+                try:
+                    with open(file_path, 'r', encoding='utf-8') as file:
+                        input_text = file.read()
+                except Exception as e:
+                    print('error read file')
+                    continue
+                
                 if len(input_text) < 300:
                     continue
-                updated_prompt = prompt + input_text
-                global time, status  # 使用全局变量以便在函数内修改
+                # 如果文本长度超过8000，则进行分段处理
+                max_length = 8000
+                segments = [input_text[i:i+max_length] for i in range(0, len(input_text), max_length)]
+            
+                for segment in segments:
+                    
+                    updated_prompt = prompt + segment
+                    global time, status  # 使用全局变量以便在函数内修改
 
-                # 检查是否需要更改浏览器状态
-                if time % 4 == 0:
-                    status = 'edge' if status == 'chrome' else 'chrome'  # 切换状态
-                    fresh = True
-                    vpn_fresh = True
-                else:
-                    fresh = False
-                    vpn_fresh = False
-                status = 'edge'
-                try:
-                    content = use_client(updated_prompt, status=status, vpn_fresh=vpn_fresh, fresh=fresh, only_md_json=True)
-                except Exception:
-                    return 1
+                    # 检查是否需要更改浏览器状态
+                    if time % 8 == 0:
+                        status = 'edge' if status == 'chrome' else 'chrome'  # 切换状态
+                        fresh = True
+                        vpn_fresh = False
+                    else:
+                        fresh = False
+                        vpn_fresh = False
 
-                time = time + 1
-                with open(output_file, 'a', encoding='utf-8') as out_file:
-                    out_file.write(content)
-                print(f"Written to {output_file}. content is : \n {content}")
+                    try:
+                        content = use_client(updated_prompt, status=status, vpn_fresh=vpn_fresh, fresh=fresh, only_md_json=True, long_output=True)
+                    except Exception:
+                        continue
 
-                # 将处理过的文件路径添加到日志中
-                with open(log_file, 'a', encoding='utf-8') as log:
-                    log.write(file_path + '\n')
+                    time = time + 1
+                    with open(output_file, 'a', encoding='utf-8') as out_file:
+                        out_file.write(content)
+                    print(f"Written to {output_file}. content is : \n {content}")
 
-                total += 1
+                    # 将处理过的文件路径添加到日志中
+                    with open(log_file, 'a', encoding='utf-8') as log:
+                        log.write(file_path + '\n')
+
+                    total += 1
 
                 if total > 3:
                     return total
@@ -111,7 +121,7 @@ def replace_original_file(original_file, new_file):
 
 # 在脚本开始前暂停5秒以允许准备
 sleep(5)
-input_folder = 'Z:\MY_FIELS\Project\Python\mistral-src\k8s-go'
+input_folder = '/home/cjx/project/learning-k8s-source-code'
 output_file = '../resources/ops_data_en_improve.jsonl'
 with open('../resources/prompt/prompt_extract_multiple_choice.txt', 'r', encoding='utf-8') as file:
     prompt = file.read()
