@@ -21,20 +21,20 @@ def get_gpt_scores(text, score_column):
     prompt = prompt_text.format(answer=text['answer'], GPT=text[column])
 
     # 检查是否需要更改浏览器状态
-    if time % 10 == 0:
+    if time % 4 == 0:
         status = 'edge' if status == 'chrome' else 'chrome'
         fresh = True
         vpn_fresh = True
     else:
         fresh = False
         vpn_fresh = False
-    status = 'edge'
+
     # 从已存在的分数中筛选并清理 NaN
     existing_scores = [score for score in str(text[score_column]).split(',') if
                        score.strip().lower() != 'nan' and score.strip()]
 
     # 如果已经有三个分数，则不需要再评估
-    if len(existing_scores) >= 1:
+    if len(existing_scores) >= 3:
         return existing_scores
 
     # 否则，继续获取新的分数
