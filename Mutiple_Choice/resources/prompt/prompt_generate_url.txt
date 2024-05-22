@@ -1,0 +1,48 @@
+
+
+### **详细任务描述**
+
+#### **搜索目的详细：**
+- **资源收集**：寻找专门讨论Kubernetes技术栈的面试准备资源。
+- **内容涵盖**：获取面试题、答案解析、面试技巧和经验分享的网页。
+- **难度级别**：收集不同难度级别的面试题目，满足初级到高级求职者的需求。
+
+#### **搜索范围扩展：**
+- **技术博客**：搜索知名博主或行业专家发布的关于Kubernetes面试的文章。
+- **在线教育平台**：搜集提供Kubernetes课程和可能包含面试题的认证课程链接。
+- **专业问答网站**：在Stack Overflow等网站上查找与Kubernetes面试相关的热门问题和答案。
+- **技术社区论坛**：访问Reddit的相关subreddits或技术论坛，搜寻用户分享的面试经验。
+- **官方文档**：访问Kubernetes官方网站和相关项目文档，获取权威的面试问题和答案。
+
+#### **搜索关键词丰富：**
+- **基本关键词**：“Kubernetes interview questions”，“Kubernetes interview prep”。
+- **具体关键词**：“CKAD practice questions”，“Kubernetes exam topics”，“Kubernetes troubleshooting interview questions”。
+- **搜索运算符**：使用“Kubernetes AND interview AND 'practice questions'”等组合来缩小搜索结果。
+
+#### **质量要求具体化：**
+- **活跃度**：选择有活跃社区参与、频繁更新内容的网站。
+- **权威性**：优先考虑由认证的Kubernetes专家或官方机构发布的资源。
+- **准确性**：确认网站的可信度和信息的准确性。
+
+#### **输出格式规范化：**
+- **网址格式**：每个网址单独成行，使用标准的URL格式。
+- **描述内容**：在每个网址后面附上简短的描述，包括网站名称、主要内容和推荐理由。
+- **排序方式**：按照网站类型或相关性进行排序，方便用户根据自己的需求选择。
+
+我要求：你输出的内容格式为纯Markdown格式，并且输出的内容需要输出到一个Markdown语法的JSON代码框中，下面是一个输出格式的案例：
+```json
+[
+    {
+        "url": "XX",
+        "description": "XX"
+    },
+    {
+        "url": "YY",
+        "description": "XX"
+    },
+    {
+        "url": "ZZ",
+        "description": "XX"
+    }
+]
+'''

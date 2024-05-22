@@ -185,13 +185,13 @@ def find_and_write(df, input_data, model_name, prompt_text, fresh=True, multiple
         prompt_text = prompt_text.format(**question_data)
         try:
             # simulated_output = use_client(prompt_text, status='chrome', vpn_fresh=False, fresh=fresh)
-            print(f"prompt is : {prompt_text}")
             simulated_output = generate_completion(prompt_text)
-            last_inst_index = simulated_output.rfind("[/INST]")
-            last_s_index = simulated_output.rfind("</s>")
-            str_back = simulated_output[last_inst_index + 7:last_s_index].strip()
-
-            # str_back = simulated_output
+            # last_inst_index = simulated_output.rfind("[/INST]")
+            # last_s_index = simulated_output.rfind("</s>")
+            # str_back = simulated_output[last_inst_index + 7:last_s_index].strip()
+            print(f"question id : {empty_id}")
+            str_back = simulated_output
+            print(f"raw model output is: {str_back}")
             # 提取选择题答案
             if multiple_choice:
                 str_back = extract_answer(str_back)
@@ -261,5 +261,5 @@ def new_json_line(df, json_data):
 if __name__ == "__main__":
     csv_file_path = "../resources/result.csv"
     json_file_path = "../resources/ops_data_en_improve.jsonl"
-    model_names = "Mistral-7B-instruct-v2-lora"
+    model_names = "Mistral-7B-instruct-lora-v1"
     main(csv_file_path, json_file_path, model_names, infer_type='multiple_choice')

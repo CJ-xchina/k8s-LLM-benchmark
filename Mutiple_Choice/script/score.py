@@ -349,12 +349,12 @@ accuracy_obj, scores = calculate_accuracy(csv_file_O, jsonl_file_O, type='O')
 # 计算准确率并绘制柱状图
 
 #
-# plot_bar_chart(accuracy_Mul, result_path_Mul)
-#
-# plot_radar_chart(accuracy_Mul, result_path_Mul)
-#
-# plot_bar_chart(accuracy_obj, result_path_Obj)
-#
-# plot_radar_chart(accuracy_obj, result_path_Obj)
+plot_bar_chart(accuracy_Mul, result_path_Mul)
+
+plot_radar_chart(accuracy_Mul, result_path_Mul)
+
+plot_bar_chart(accuracy_obj, result_path_Obj)
+
+plot_radar_chart(accuracy_obj, result_path_Obj)
 
 plot_combined_accuracy(accuracy_Mul, accuracy_obj)
