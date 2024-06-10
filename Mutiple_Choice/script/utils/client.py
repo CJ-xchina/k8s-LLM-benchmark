@@ -8,7 +8,7 @@ import requests
 from pydantic import BaseModel
 
 
-def find_and_click(folder_path, time_limit=2, double_click=False):
+def find_and_click(folder_path, time_limit=2, double_click=False, left_offset=0):
     start_time = time.time()  # 开始时间
 
     while True:
@@ -47,7 +47,7 @@ def find_and_click(folder_path, time_limit=2, double_click=False):
                 x, y = max_loc[0] + w // 2, max_loc[1] + h // 2
 
                 # 移动鼠标并点击
-                pyautogui.moveTo(x, y, duration=0.1)
+                pyautogui.moveTo(x + left_offset, y, duration=0.1)
                 if double_click:
                     pyautogui.click()
                     pyautogui.click()
@@ -60,9 +60,9 @@ def find_and_click(folder_path, time_limit=2, double_click=False):
         time.sleep(0.5)
 
 
-def find_and_click_paste(image_path, prompt):
+def find_and_click_paste(image_path, prompt, left_offset=0):
     pyperclip.copy(prompt)
-    res = find_and_click(image_path)
+    res = find_and_click(image_path, left_offset=left_offset)
     # pyautogui.typewrite(prompt)
     pyautogui.hotkey('ctrl', 'v')
     pyautogui.press('enter')
@@ -149,7 +149,7 @@ def use_client(prompt, status, target_chatbot='https://chatgpt.com/?model=gpt-4'
     refresh_vpn = f'../images/refresh_vpn'
     max_time = f'../images/max_time'
     ms = f'../images/ms'
-
+    gpt_title = f"../images/GPT3.5"
     # 继续生存
     continue_generation = f'../images/continue_generation'
 
@@ -171,8 +171,8 @@ def use_client(prompt, status, target_chatbot='https://chatgpt.com/?model=gpt-4'
         time.sleep(7)
         find_and_click(ms, time_limit=2, double_click=True)
 
-    # 找到对话
-    find_and_click_paste(web_search, target_chatbot)
+    # 找到对话chatbot
+    find_and_click_paste(fresh_button, target_chatbot, left_offset=200)
 
     # 刷新
     if fresh:
@@ -195,7 +195,16 @@ def use_client(prompt, status, target_chatbot='https://chatgpt.com/?model=gpt-4'
     #     find_and_click(status_map[status])
     #     raise Exception("time access limit in GPT4.0 model , wait 30 minutes")
     time.sleep(5)
-    if find_and_click(click_input_line) == False:
+    find_and_click(new_chat_button)
+    time.sleep(2)
+
+    # GPT4o无法使用
+    if find_and_click(gpt_title):
+        # 点击浏览器
+        find_and_click(status_map[status])
+        raise Exception("Max use of this chatbot")
+    # 加载出错
+    if not find_and_click(click_input_line):
         print("Error occur because of errors")
         find_and_click(fresh_button)
         # 点击浏览器

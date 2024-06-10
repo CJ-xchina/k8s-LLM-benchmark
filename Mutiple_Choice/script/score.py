@@ -195,7 +195,7 @@ def plot_bar_chart(accuracy, save_path):
         fig, ax = plt.subplots(figsize=(14, 8))
 
         # Define the width of the bars and the position of each bar
-        bar_width = 0.25
+        bar_width = 0.15
         index = np.arange(n_categories)
 
         # Color map for the models
@@ -270,8 +270,19 @@ def plot_radar_chart(accuracy, save_path):
     angles += angles[:1]
 
     fig, ax = plt.subplots(figsize=(10, 10), subplot_kw=dict(polar=True))
+
+    # 定义颜色
+    colors = {
+        'LLama3-Kubernetes-v1': '#2ca02c',  # 修改为绿色
+        'GPT-3.5': '#1f77b4',
+        'Mistral-7B-instruct-v2': '#ff7f0e',
+        'LLama3-base': '#d62728',
+        # 可以继续添加其他模型及其颜色
+    }
+
     for model in models:
-        ax.fill(angles, scores[model], alpha=0.25, label=model)
+        color = colors.get(model, np.random.rand(3, ))  # 获取预定义颜色或生成随机颜色
+        ax.fill(angles, scores[model], alpha=0.25, label=model, color=color)
 
     # 美化图表
     ax.set_yticklabels([])
@@ -292,8 +303,8 @@ def plot_combined_accuracy(mcq_accuracy, essay_accuracy):
     categories = ['K8s Code Commands', 'K8s Knowledge Base', 'K8s Real-World Problems']
 
     fig, ax = plt.subplots(figsize=(10, 7))
-    bar_height = 0.35
-    y = np.arange(len(models))
+    bar_height = 0.25
+    y = np.arange(len(models)) * 0.5
 
     # Colors for differentiating MCQ and Essay for each category
     mcq_colors = ['#1f77b4', '#ff7f0e', '#2ca02c']
@@ -314,6 +325,7 @@ def plot_combined_accuracy(mcq_accuracy, essay_accuracy):
             ax.barh(y[i], essay, bar_height, left=bottom[i], label=f'Essay {categories[j]}' if i == 0 else "",
                     color=essay_colors[j])
             bottom[i] += essay
+
 
     # Adding labels, title, and custom y-axis tick labels, etc.
     ax.set_ylabel('Model')
@@ -342,7 +354,7 @@ accuracy_Mul, scores = calculate_accuracy(csv_file_M, jsonl_file_M)
 
 # 问答题部分
 csv_file_O = "../resources/result_obj.csv"
-jsonl_file_O = "../resources/questions.json"
+jsonl_file_O = "../resources/questions.jsonl"
 result_path_Obj = "../resources/result/Objective"
 accuracy_obj, scores = calculate_accuracy(csv_file_O, jsonl_file_O, type='O')
 
@@ -350,11 +362,9 @@ accuracy_obj, scores = calculate_accuracy(csv_file_O, jsonl_file_O, type='O')
 
 #
 plot_bar_chart(accuracy_Mul, result_path_Mul)
-
-plot_radar_chart(accuracy_Mul, result_path_Mul)
-
 plot_bar_chart(accuracy_obj, result_path_Obj)
 
+plot_radar_chart(accuracy_Mul, result_path_Mul)
 plot_radar_chart(accuracy_obj, result_path_Obj)
 
 plot_combined_accuracy(accuracy_Mul, accuracy_obj)

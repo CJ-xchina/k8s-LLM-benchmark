@@ -90,6 +90,6 @@ def calculate_normalized_accuracy_per_category_subcategory(csv_file, jsonl_file)
 
 # 使用函数
 csv_file = "../resources/result_obj.csv"
-jsonl_file = "../resources/questions.json"
+jsonl_file = "../resources/questions.jsonl"
 accuracy = calculate_normalized_accuracy_per_category_subcategory(csv_file, jsonl_file)
 print(accuracy)

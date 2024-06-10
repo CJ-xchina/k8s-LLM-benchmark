@@ -39,11 +39,13 @@ def get_gpt_scores(text, score_column):
 
     # 否则，继续获取新的分数
     try:
-        simulated_output = use_client(prompt, status=status, vpn_fresh=vpn_fresh, fresh=fresh)
+        simulated_output = use_client(prompt, status=status, vpn_fresh=vpn_fresh,
+                                      target_chatbot="https://chatgpt.com/?model=gpt-4o", fresh=fresh)
         score = extract_score(simulated_output)
         if score is not None:
             existing_scores.append(score)
     except Exception as e:
+        time += 1
         print(f"An error occurred: {e}")
         # 如果发生错误，返回已有的分数列表
         return existing_scores
