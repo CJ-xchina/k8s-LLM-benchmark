@@ -1,0 +1,3 @@
+Prompt:
+
+Translate the following JSONL formatted text from English to Chinese. Ensure that category and subcategory remain in English, and do not translate Kubernetes-related technical terms. Accurately translate other content while preserving the JSONL structure. Output the translated result into a single JSONL code block in Markdown format without any extra content. Here is the JSONL text:

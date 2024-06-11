@@ -1,0 +1,135 @@
+{"id": 1, "category": "K8s Knowledge Base", "subcategory": "Storage & Data Management", "question": "什么是ETCD及其特点？", "score": 3}
+{"id": 2, "category": "K8s Knowledge Base", "subcategory": "Storage & Data Management", "question": "ETCD适用的场景是什么？", "score": 2}
+{"id": 3, "category": "K8s Knowledge Base", "subcategory": "Core Concepts", "question": "什么是Kubernetes？", "score": 1}
+{"id": 4, "category": "K8s Knowledge Base", "subcategory": "Core Concepts", "question": "Kubernetes和Docker之间的关系是什么？", "score": 2}
+{"id": 5, "category": "K8s Knowledge Base", "subcategory": "Configuration and Operations", "question": "Kubernetes中的Minikube、Kubectl和Kubelet是什么？", "score": 3}
+{"id": 6, "category": "K8s Knowledge Base", "subcategory": "Configuration and Operations", "question": "Kubernetes中的常见部署方法有哪些？", "score": 3}
+{"id": 7, "category": "K8s Knowledge Base", "subcategory": "High Availability and Disaster Recovery", "question": "Kubernetes如何管理集群？", "score": 3}
+{"id": 8, "category": "K8s Knowledge Base", "subcategory": "Core Concepts", "question": "Kubernetes的优点、适用场景和特点是什么？", "score": 3}
+{"id": 9, "category": "K8s Knowledge Base", "subcategory": "Core Concepts", "question": "Kubernetes的缺点或当前的不足之处有哪些？", "score": 2}
+{"id": 10, "category": "K8s Knowledge Base", "subcategory": "Core Concepts", "question": "与Kubernetes相关的一些基本概念是什么？", "score": 2}
+{"id": 11, "category": "K8s Knowledge Base", "subcategory": "Core Concepts", "question": "描述一个Kubernetes集群的相关组件？", "score": 3}
+{"id": 12, "category": "K8s Knowledge Base", "subcategory": "Core Concepts", "question": "描述Kubernetes RC（Replication Controller）的机制？", "score": 3}
+{"id": 13, "category": "K8s Knowledge Base", "subcategory": "Network and Service Discovery", "question": "kube-proxy的作用是什么？", "score": 3}
+{"id": 14, "category": "K8s Knowledge Base", "subcategory": "Network and Service Discovery", "question": "使用iptables描述kube-proxy的原理？", "score": 4}
+{"id": 15, "category": "K8s Knowledge Base", "subcategory": "Network and Service Discovery", "question": "使用IPVS描述kube-proxy的原理？", "score": 4}
+{"id": 16, "category": "K8s Knowledge Base", "subcategory": "Network and Service Discovery", "question": "描述 kube-proxy 中 IPVS 和 iptables 之间的相似性和差异？", "score": 4}
+{"id": 17, "category": "K8s Knowledge Base", "subcategory": "Core Concepts", "question": "什么是 Kubernetes 中的静态 Pod？", "score": 3}
+{"id": 18, "category": "K8s Knowledge Base", "subcategory": "Core Concepts", "question": "描述 Kubernetes 中 Pod 可能处于的状态？", "score": 3}
+{"id": 19, "category": "K8s Knowledge Base", "subcategory": "Core Concepts", "question": "描述在 Kubernetes 中创建 Pod 的主要过程？", "score": 3}
+{"id": 20, "category": "K8s Knowledge Base", "subcategory": "Core Concepts", "question": "描述 Kubernetes 中 Pod 的重启策略？", "score": 3}
+{"id": 21, "category": "K8s Knowledge Base", "subcategory": "Core Concepts", "question": "描述 Kubernetes 中 Pod 的健康检查方法？", "score": 3}
+{"id": 22, "category": "K8s Knowledge Base", "subcategory": "Core Concepts", "question": "描述 Kubernetes 中 Pod 的 LivenessProbe 的常见方法？", "score": 3}
+{"id": 23, "category": "K8s Knowledge Base", "subcategory": "Core Concepts", "question": "描述 Kubernetes 中 Pod 的常见调度方法？", "score": 3}
+{"id": 24, "category": "K8s Knowledge Base", "subcategory": "Core Concepts", "question": "描述 Kubernetes 中的 init container？", "score": 3}
+{"id": 25, "category": "K8s Knowledge Base", "subcategory": "Configuration and Operations", "question": "描述 Kubernetes 部署的升级过程？", "score": 3}
+{"id": 26, "category": "K8s Knowledge Base", "subcategory": "Configuration and Operations", "question": "描述 Kubernetes 部署的升级策略？", "score": 3}
+{"id": 27, "category": "K8s Knowledge Base", "subcategory": "Core Concepts", "question": "描述 Kubernetes DaemonSet 的资源特性？", "score": 3}
+{"id": 28, "category": "K8s Knowledge Base", "subcategory": "Performance Optimisation", "question": "描述 Kubernetes 中的自动伸缩机制？", "score": 3}
+{"id": 29, "category": "K8s Knowledge Base", "subcategory": "Network and Service Discovery", "question": "描述 Kubernetes 服务的类型？", "score": 3}
+{"id": 30, "category": "K8s Knowledge Base", "subcategory": "Network and Service Discovery", "question": "描述 Kubernetes 服务的后端分布策略？", "score": 3}
+{"id": 31, "category": "K8s Knowledge Base", "subcategory": "Network and Service Discovery", "question": "描述 Kubernetes Headless Service？", "score": 3}
+{"id": 32, "category": "K8s Knowledge Base", "subcategory": "Network and Service Discovery", "question": "描述外部实体如何访问 Kubernetes 集群内的服务？", "score": 3}
+{"id": 33, "category": "K8s Knowledge Base", "subcategory": "Network and Service Discovery", "question": "描述 Kubernetes ingress？", "score": 3}
+{"id": 34, "category": "K8s Knowledge Base", "subcategory": "Configuration and Operations", "question": "描述 Kubernetes 镜像下载策略？", "score": 3}
+{"id": 35, "category": "K8s Knowledge Base", "subcategory": "Performance Optimisation", "question": "描述 Kubernetes 中的负载均衡器？", "score": 3}
+{"id": 36, "category": "K8s Knowledge Base", "subcategory": "Core Concepts", "question": "各个模块如何与 Kubernetes API Server 通信？", "score": 3}
+{"id": 37, "category": "K8s Knowledge Base", "subcategory": "Performance Optimisation", "question": "Kubernetes Scheduler 的角色和实现原理是什么？", "score": 4}
+{"id": 38, "category": "K8s Knowledge Base", "subcategory": "Performance Optimisation", "question": "Kubernetes Scheduler 使用哪两种算法将 Pod 绑定到工作节点？", "score": 4}
+{"id": 39, "category": "K8s Knowledge Base", "subcategory": "Core Concepts", "question": "Kubernetes kubelet 的角色是什么？", "score": 3}
+{"id": 40, "category": "K8s Knowledge Base", "subcategory": "Monitoring and Logging", "question": "Kubernetes kubelet 使用什么组件监控工作节点上的资源？", "score": 3}
+{"id": 41, "category": "K8s Knowledge Base", "subcategory": "Security", "question": "Kubernetes 如何确保集群的安全？", "score": 4}
+{"id": 42, "category": "K8s Knowledge Base", "subcategory": "Security", "question": "描述 Kubernetes 的准入机制？", "score": 4}
+{"id": 43, "category": "K8s Knowledge Base", "subcategory": "Security", "question": "描述 Kubernetes RBAC 及其特点（优势）？", "score": 4}
+{"id": 44, "category": "K8s Knowledge Base", "subcategory": "Security", "question": "Kubernetes Secret 的作用是什么？", "score": 3}
+{"id": 45, "category": "K8s Knowledge Base", "subcategory": "Security", "question": "Kubernetes Secret 的使用方法有哪些？", "score": 3}
+{"id": 46, "category": "K8s Knowledge Base", "subcategory": "Security", "question": "描述Kubernetes PodSecurityPolicy机制？", "score": 4}
+{"id": 47, "category": "K8s Knowledge Base", "subcategory": "Security", "question": "Kubernetes PodSecurityPolicy机制可以实施哪些安全策略？", "score": 4}
+{"id": 48, "category": "K8s Knowledge Base", "subcategory": "Network and Service Discovery", "question": "描述Kubernetes网络模型？", "score": 4}
+{"id": 49, "category": "K8s Knowledge Base", "subcategory": "Network and Service Discovery", "question": "描述Kubernetes CNI模型？", "score": 4}
+{"id": 50, "category": "K8s Knowledge Base", "subcategory": "Network and Service Discovery", "question": "描述Kubernetes网络策略？", "score": 4}
+{"id": 51, "category": "K8s Knowledge Base", "subcategory": "Network and Service Discovery", "question": "你能描述一下Kubernetes网络策略的原理吗？", "score": 3}
+{"id": 52, "category": "K8s Knowledge Base", "subcategory": "Network and Service Discovery", "question": "Flannel在Kubernetes中的作用是什么？", "score": 3}
+{"id": 53, "category": "K8s Knowledge Base", "subcategory": "Network and Service Discovery", "question": "你能解释一下Kubernetes中Calico网络组件的实现原理吗？", "score": 4}
+{"id": 54, "category": "K8s Knowledge Base", "subcategory": "Storage & Data Management", "question": "共享存储在Kubernetes中的作用是什么？", "score": 3}
+{"id": 55, "category": "K8s Knowledge Base", "subcategory": "Storage & Data Management", "question": "Kubernetes中的数据持久化方法有哪些？", "score": 3}
+{"id": 56, "category": "K8s Knowledge Base", "subcategory": "Storage & Data Management", "question": "你能描述一下Kubernetes中的持久卷（PV）和持久卷声明（PVC）吗？", "score": 3}
+{"id": 57, "category": "K8s Knowledge Base", "subcategory": "Storage & Data Management", "question": "Kubernetes持久卷的生命周期有哪些阶段？", "score": 4}
+{"id": 58, "category": "K8s Knowledge Base", "subcategory": "Storage & Data Management", "question": "Kubernetes支持哪些存储供应模型？", "score": 4}
+{"id": 59, "category": "K8s Knowledge Base", "subcategory": "Storage & Data Management", "question": "你能解释一下Kubernetes容器存储接口（CSI）模型吗？", "score": 4}
+{"id": 60, "category": "K8s Real-World Problems", "subcategory": "Cluster Configuration Problems", "question": "Kubernetes工作节点加入集群的过程是什么？", "score": 3}
+{"id": 61, "category": "K8s Knowledge Base", "subcategory": "Core Concepts", "question": "Kubernetes Pod如何控制节点上的资源？", "score": 3}
+{"id": 62, "category": "K8s Knowledge Base", "subcategory": "Core Concepts", "question": "Kubernetes Pod如何在节点上实现资源控制？", "score": 3}
+{"id": 63, "category": "K8s Knowledge Base", "subcategory": "Performance Optimisation", "question": "Kubernetes的Requests和Limits如何影响Pod的调度？", "score": 3}
+{"id": 64, "category": "K8s Knowledge Base", "subcategory": "Monitoring and Logging", "question": "你能描述一下Kubernetes Metric Service吗？", "score": 3}
+{"id": 65, "category": "K8s Knowledge Base", "subcategory": "Monitoring and Logging", "question": "Kubernetes如何使用EFK栈统一日志管理？", "score": 4}
+{"id": 66, "category": "K8s Knowledge Base", "subcategory": "Configuration and Operations", "question": "Kubernetes如何执行节点维护的优雅关闭？", "score": 3}
+{"id": 67, "category": "K8s Knowledge Base", "subcategory": "High Availability and Disaster Recovery", "question": "你能解释一下Kubernetes集群联邦的概念吗？", "score": 4}
+{"id": 68, "category": "K8s Knowledge Base", "subcategory": "Configuration and Operations", "question": "什么是Helm，它在Kubernetes中的优势是什么？", "score": 4}
+{"id": 69, "category": "K8s Knowledge Base", "subcategory": "Core Concepts", "question": "什么是Kubernetes？请描述你对它的理解。", "score": 2}
+{"id": 70, "category": "K8s Knowledge Base", "subcategory": "Core Concepts", "question": "Kubernetes的架构组成是什么？", "score": 3}
+{"id": 71, "category": "K8s Knowledge Base", "subcategory": "Core Concepts", "question": "在容器中部署应用程序与在主机上部署应用程序有什么区别？", "score": 3}
+{"id": 72, "category": "K8s Real-World Problems", "subcategory": "Workload management problems", "question": "如何控制Kubernetes中的滚动更新过程？", "score": 4}
+{"id": 73, "category": "K8s Knowledge Base", "subcategory": "Configuration and Operations", "question": "Kubernetes中的镜像拉取策略有哪些？", "score": 3}
+{"id": 74, "category": "K8s Knowledge Base", "subcategory": "Core Concepts", "question": "Kubernetes中镜像的不同状态是什么？", "score": 3}
+{"id": 75, "category": "K8s Knowledge Base", "subcategory": "Core Concepts", "question": "Kubernetes中的Pod重启策略是什么？", "score": 3}
+{"id": 76, "category": "K8s Knowledge Base", "subcategory": "Network and Service Discovery", "question": "Kubernetes中Service资源对象的功能是什么？", "score": 3}
+{"id": 77, "category": "K8s Code Commands", "subcategory": "Multi-Command Operations", "question": "Kubernetes中与版本回滚相关的命令是什么？", "score": 3}
+{"id": 78, "category": "K8s Knowledge Base", "subcategory": "Configuration and Operations", "question": "Kubernetes中标签和标签选择器的作用是什么？", "score": 3}
+{"id": 79, "category": "K8s Knowledge Base", "subcategory": "Configuration and Operations", "question": "Kubernetes中常用的标签类别有哪些？", "score": 3}
+{"id": 80, "category": "K8s Knowledge Base", "subcategory": "Configuration and Operations", "question": "Kubernetes中有多少种查看标签的方法？", "score": 2}
+{"id": 81, "category": "K8s Code Commands", "subcategory": "Single-Command Operations", "question": "Kubernetes中添加、修改和删除标签的命令是什么？", "score": 3}
+{"id": 82, "category": "K8s Knowledge Base", "subcategory": "Core Concepts", "question": "Kubernetes中DaemonSet资源对象的特点是什么？", "score": 4}
+{"id": 83, "category": "K8s Knowledge Base", "subcategory": "Core Concepts", "question": "你对Kubernetes中Job资源对象的理解是什么？", "score": 3}
+{"id": 84, "category": "K8s Knowledge Base", "subcategory": "Core Concepts", "question": "Kubernetes中Pod生命周期的不同状态有哪些？", "score": 4}
+{"id": 85, "category": "K8s Code Commands", "subcategory": "Single-Command Operations", "question": "Kubernetes中创建Pod的过程是什么？", "score": 3}
+{"id": 86, "category": "K8s Code Commands", "subcategory": "Single-Command Operations", "question": "当你删除Kubernetes中的Pod时会发生什么？", "score": 3}
+{"id": 87, "category": "K8s Knowledge Base", "subcategory": "Network and Service Discovery", "question": "什么是Kubernetes Service？", "score": 3}
+{"id": 88, "category": "K8s Knowledge Base", "subcategory": "Network and Service Discovery", "question": "Kubernetes中的服务注册是如何工作的？", "score": 3}
+{"id": 89, "category": "K8s Knowledge Base", "subcategory": "Network and Service Discovery", "question": "在Kubernetes集群中，如何将外部流量导向Pod？", "score": 3}
+{"id": 90, "category": "K8s Knowledge Base", "subcategory": "Storage & Data Management", "question": "Kubernetes中数据持久化的方法有哪些？", "score": 3}
+{"id": 91, "category": "K8s Knowledge Base", "subcategory": "Core Concepts", "question": "Kubernetes和Docker Swarm之间有哪些区别？", "score": 4}
+{"id": 92, "category": "K8s Knowledge Base", "subcategory": "Core Concepts", "question": "什么是Kubernetes？", "score": 2}
+{"id": 93, "category": "K8s Knowledge Base", "subcategory": "Security", "question": "Kubernetes如何在pod级别处理安全上下文？", "score": 3}
+{"id": 94, "category": "K8s Real-World Problems", "subcategory": "Workload management problems", "question": "Kubernetes中pod驱逐的常见原因是什么？", "score": 4}
+{"id": 95, "category": "K8s Code Commands", "subcategory": "Single-Command Operations", "question": "如何使用kubectl显示给定Kubernetes命名空间内的所有当前资源配额？", "score": 2}
+{"id": 96, "category": "K8s Knowledge Base", "subcategory": "Monitoring and Logging", "question": "描述Prometheus如何与Kubernetes集成进行监控？", "score": 5}
+{"id": 97, "category": "K8s Real-World Problems", "subcategory": "Application Level Issues", "question": "Kubernetes中，特别是HTTP请求超时的情况下，导致就绪探测间歇性失败的原因可能是什么？", "score": 4}
+{"id": 98, "category": "K8s Knowledge Base", "subcategory": "Network and Service Discovery", "question": "Kubernetes中一些常见的网络相关原因可能导致就绪探测失败是什么？", "score": 3}
+{"id": 99, "category": "K8s Code Commands", "subcategory": "Single-Command Operations", "question": "如何检索Kubernetes pod在间歇性就绪探测失败时的日志？", "score": 3}
+{"id": 100, "category": "K8s Knowledge Base", "subcategory": "Monitoring and Logging", "question": "讨论监控工具如何用于诊断Kubernetes环境中间歇性的就绪探测失败。", "score": 5}
+{"id": 101, "category": "K8s Real-World Problems", "subcategory": "Cluster Configuration Problems", "question": "当Kubernetes命名空间无限期地处于'Terminating'状态时应采取哪些步骤？", "score": 4}
+{"id": 102, "category": "K8s Knowledge Base", "subcategory": "Configuration and Operations", "question": "自定义资源定义（CRD）如何影响Kubernetes中命名空间的删除？", "score": 4}
+{"id": 103, "category": "K8s Real-World Problems", "subcategory": "Cluster Configuration Problems", "question": "导致命名空间卡在'Terminating'状态的常见问题是什么以及如何解决这些问题？", "score": 5}
+{"id": 104, "category": "K8s Knowledge Base", "subcategory": "Security", "question": "讨论终结器和权限如何影响Kubernetes中命名空间的删除以及安全处理这些配置的方法。", "score": 5}
+{"id": 105, "category": "K8s Knowledge Base", "subcategory": "Core Concepts", "question": "Kubernetes文档中'Concepts'部分的主要目标是什么？", "score": 1}
+{"id": 106, "category": "K8s Knowledge Base", "subcategory": "Core Concepts", "question": "“Concepts”部分主要关注Kubernetes的哪些方面？", "score": 1}
+{"id": 107, "category": "K8s Real-World Problems", "subcategory": "Cluster Configuration Problems", "question": "应该检查什么以确认您的系统是否使用cgroup v2？", "score": 3}
+{"id": 108, "category": "K8s Code Commands", "subcategory": "Single-Command Operations", "question": "使用Kubernetes时，不需要满足哪个要求来使用cgroup v2？", "score": 4}
+{"id": 109, "category": "K8s Knowledge Base", "subcategory": "Network and Service Discovery", "question": "Kubernetes集群中DNS解析间歇性5秒延迟的主要原因是什么？", "score": 4}
+{"id": 110, "category": "K8s Real-World Problems", "subcategory": "Network Problem Diagnosis", "question": "在Kubernetes中，遇到pod中的DNS解析延迟时应采取哪些故障排除步骤？", "score": 5}
+{"id": 111, "category": "K8s Knowledge Base", "subcategory": "Monitoring and Logging", "question": "哪种Kubernetes工具可以有效监控DNS延迟问题？", "score": 3}
+{"id": 112, "category": "K8s Real-World Problems", "subcategory": "Application Level Issues", "question": "如何使用网络策略缓解Kubernetes pod中的DNS超时问题？", "score": 4}
+{"id": 113, "category": "K8s Real-World Problems", "subcategory": "Workload Management Problems", "question": "我有几个想与Minikube一起使用的Docker镜像。我不想先上传再下载相同的镜像，而是希望直接使用本地镜像。在像Minikube这样的本地Kubernetes实例中，如何直接使用本地Docker镜像？", "score": 4}
+{"id": 114, "category": "K8s Knowledge Base", "subcategory": "Network and Service Discovery", "question": "有人能解释在Kubernetes中使用无头服务的目的和好处吗？", "score": 3}
+{"id": 115, "category": "K8s Code Commands", "subcategory": "Multi-Command Operations", "question": "如何删除Kubernetes中所有命名空间中的所有pod？", "score": 4}
+{"id": 116, "category": "K8s Real-World Problems", "subcategory": "Cluster Configuration Problems", "question": "应该检查什么以确认您的系统是否使用cgroup v2？", "score": 3}
+{"id": 117, "category": "K8s Code Commands", "subcategory": "Single-Command Operations", "question": "使用Kubernetes时，不需要满足哪个要求来使用cgroup v2？", "score": 4}
+{"id": 118, "category": "K8s Code Commands", "subcategory": "Multi-command Operations", "question": "在Kubernetes中，调整PersistentVolume和相应的PersistentVolumeClaim大小应该采取哪些步骤？", "score": 4}
+{"id": 119, "category": "K8s Code Commands", "subcategory": "Multi-command Operations", "question": "如何手动将Pod从一个节点故障切换到另一个节点，包括所有必要的kubectl命令？", "score": 4}
+{"id": 120, "category": "K8s Code Commands", "subcategory": "Multi-command Operations", "question": "请详细说明更新现有部署的镜像并在必要时回滚的kubectl命令序列。", "score": 5}
+{"id": 121, "category": "K8s Code Commands", "subcategory": "Multi-command Operations", "question": "解释如何使用必要的kubectl命令设置允许来自特定命名空间的流量的网络策略。", "score": 4}
+{"id": 122, "category": "K8s Code Commands", "subcategory": "Multi-command Operations", "question": "描述导出一个命名空间中所有Pod日志并过滤错误信息所需的kubectl命令。", "score": 4}
+{"id": 123, "category": "K8s Code Commands", "subcategory": "Multi-command Operations", "question": "列出从文件创建ConfigMap、将其附加到Pod并验证其在Pod中的存在的kubectl命令序列。", "score": 5}
+{"id": 124, "category": "K8s Code Commands", "subcategory": "Multi-command Operations", "question": "将部署扩展到10个副本并确认部署状态所需的步骤和kubectl命令是什么？", "score": 3}
+{"id": 125, "category": "K8s Code Commands", "subcategory": "Multi-command Operations", "question": "提供创建secret、将其应用于部署并验证其在Pod中使用的kubectl命令的详细步骤。", "score": 5}
+{"id": 126, "category": "K8s Real-World Problems", "subcategory": "Network Problem Diagnosis", "question": "如何排除Kubernetes中常见的网络问题，包括延迟、路由和DNS解析？", "score": 4}
+{"id": 127, "category": "K8s Real-World Problems", "subcategory": "Workload Management Problems", "question": "可以采取哪些步骤来诊断和修复Kubernetes中持续的ImagePullBackOff错误？", "score": 4}
+{"id": 128, "category": "K8s Real-World Problems", "subcategory": "Cluster Configuration Problems", "question": "如何解决Kubernetes中常见的Windows容器问题，如网络和部署问题？", "score": 3}
+{"id": 129, "category": "K8s Real-World Problems", "subcategory": "Monitoring & Logging Issues", "question": "有哪些工具和方法可以有效调试Kubernetes网络问题？", "score": 4}
+{"id": 130, "category": "K8s Real-World Problems", "subcategory": "Application Level Issues", "question": "如何使用kubectl-wtf插件诊断Kubernetes工作负载的问题？", "score": 4}
+{"id": 131, "category": "K8s Real-World Problems", "subcategory": "Security Vulnerability and Privilege Issues", "question": "在Kubernetes集群中管理和减轻安全漏洞的有效策略是什么？", "score": 4}
+{"id": 132, "category": "K8s Real-World Problems", "subcategory": "Performance bottleneck analysis", "question": "如何识别和解决Kubernetes集群中的CPU和内存瓶颈？", "score": 4}
+{"id": 133, "category": "K8s Real-World Problems", "subcategory": "Network Problem Diagnosis", "question": "描述排除跨不同节点的Kubernetes Pod之间间歇性连接问题的过程。", "score": 4}
+{"id": 134, "category": "K8s Real-World Problems", "subcategory": "Storage Issues", "question": "在Kubernetes中排除持久卷声明（PVC）失败的步骤是什么？", "score": 3}
+{"id": 135, "category": "K8s Real-World Problems", "subcategory": "Application Level Issues", "question": "如何调试Kubernetes中无法将流量路由到正确后端Pod的服务？", "score": 4}

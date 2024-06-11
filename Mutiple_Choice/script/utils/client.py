@@ -112,7 +112,7 @@ def wait_until_image_appears(folder_path, timeout=90, check_interval=0.5):
             min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(result)
 
             # 检查是否找到了足够匹配的图片
-            if max_val >= 0.98:
+            if max_val >= 0.99:
                 return True
 
         # 等待下一次检查
@@ -121,7 +121,8 @@ def wait_until_image_appears(folder_path, timeout=90, check_interval=0.5):
     return False
 
 
-def use_client(prompt, status, target_chatbot='https://chatgpt.com/?model=gpt-4', only_md_json=False, vpn_fresh=True,
+def use_client(prompt, status, target_chatbot='https://chatgpt.com/?model=gpt-4o', only_md_json=False,
+               only_md_jsonl=False, vpn_fresh=True,
                long_output=False, fresh=True):
     # 点击输入栏
     click_input_line = f'../images/click_input_line'
@@ -215,8 +216,8 @@ def use_client(prompt, status, target_chatbot='https://chatgpt.com/?model=gpt-4'
 
     wait_until_image_appears(start_intput, timeout=60)
 
-    if long_output == True:
-        while find_and_click(continue_generation) == True:
+    if long_output:
+        while find_and_click(continue_generation):
             time.sleep(2)
             wait_until_image_appears(start_intput)
 
@@ -224,7 +225,7 @@ def use_client(prompt, status, target_chatbot='https://chatgpt.com/?model=gpt-4'
     # pyautogui.scroll(20)
 
     # 无法定位到输入栏，认为出现错误！
-    if find_and_click(click_input_line) == False:
+    if not find_and_click(click_input_line):
         print("Error occur because of errors")
         find_and_click(fresh_button)
         # 点击浏览器
@@ -240,12 +241,14 @@ def use_client(prompt, status, target_chatbot='https://chatgpt.com/?model=gpt-4'
         find_and_click(status_map[status])
         raise Exception("output equals input Error")
 
-    if only_md_json:
+    if only_md_json or only_md_jsonl:
         json_content = ''
         start_idx = 0
         while True:
             if '```json' in content[start_idx:]:
                 start_idx = content.find('```json', start_idx) + len('```json')
+                if only_md_jsonl:
+                    start_idx += 1
                 end_idx = content.find('```', start_idx)
                 if end_idx != -1:
                     json_content += content[start_idx:end_idx].strip() + '\n'
